@@ -1,4 +1,4 @@
-from django.shortcuts import render # type: ignore
+from django.shortcuts import render, get_object_or_404 # type: ignore
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect # type: ignore
 from datetime import date
 from .models import ClassList,QuizMaster
@@ -36,6 +36,35 @@ def saveQuizton(request):
     except Exception as e:
         return JsonResponse({'status':300, 'msg':"Some error occurred"})
 
+def quizEdit(request, id):
+    quizdata = QuizMaster.objects.filter(id=id).values()
+    if not quizdata:
+        return JsonResponse({"error": "Quiz not found"}, status=404)
+    else:
+        for data in quizdata:
+            image = data['image_Q']
+            audio = data['audio_Q']
+            video = data['video_Q']
+
+    if 'classLevel' in request.POST:
+        classLevel = request.POST['classLevel']
+
+    if 'inputImage' in request.FILES:
+        image = request.FILES.get('inputImage')
+
+    if 'inputAudio' in request.FILES:
+        audio = request.FILES['inputAudio']
+
+    if 'inputVideo' in request.FILES:
+        video = request.FILES['inputVideo']
+    try:
+        # QuizMaster.objects.filter(id=id).update(**updated_fields)
+        QuizMaster.objects.filter(id=id).update(classLevel=classLevel,image_Q=image,audio_Q=audio,video_Q=video, updated_on = timezone.now())
+        return JsonResponse({'status':200, 'msg':"Updated successfully"})
+    except Exception as e:
+        print(e)
+        return JsonResponse({'status':300, 'msg':"Some error occurred"})
+
 
 def classList(request):
     classlists = ClassList.objects.all()
@@ -64,5 +93,3 @@ def saveClasslist(request):
 
 def printoski(data):
     print(data)
-
-

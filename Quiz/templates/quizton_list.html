@@ -21,10 +21,14 @@
 			<td class="text-center">{{quizdata.classLevel}}</td>
 			<td class="text-center">
 				{# <img src="{{quizdata.image_Q.url}}" width="100" height="100"> #}
-				<span class="badge bg-dark text-dark viewQuizImage" data-imageurl="{{quizdata.image_Q.url}}">
-					<i class="ti-eye menu-icon text-light iconstyle" >
-						View</i>
-				</span>
+        {% if quizdata.image_Q != '' %}
+    				<span class="badge bg-dark text-dark viewQuizImage" data-imageurl="{{quizdata.image_Q.url}}">
+    					<i class="ti-eye menu-icon text-light iconstyle" >
+    						View</i>
+    				</span>
+        {% else %}
+          No media found
+        {% endif %}
 			</td>
 			<td class="text-center">
 				{# <i>{{quizdata.audio_Q|filenameonly}}<i><br> #}
@@ -50,7 +54,7 @@
 			</td>
 
 			<td class="text-center">
-				<span class="badge bg-info text-dark editQuizton">
+				<span class="badge bg-info text-dark editQuizton" data-url="{% url 'quiz_edit' id=quizdata.id %}" data-classLevel="{{quizdata.classLevel}}">
 					<i class="ti-pencil menu-icon text-light iconstyle">
 						Edit</i>
 				</span>

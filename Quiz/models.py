@@ -11,14 +11,14 @@ class ClassList(models.Model):
 
     def __str__(self):
         return f"{self.classno}-{self.class_level}"
-    
+
 
 class QuizMaster(models.Model):
     # classId = models.ForeignKey(ClassList, models.PROTECT, db_column='class_id')
     classLevel = models.CharField(max_length=5)
     image_Q = models.FileField(upload_to='2024/quizdocs/image')
-    audio_Q = models.FileField(upload_to='2024/quizdocs/audio') 
-    video_Q = models.FileField(upload_to='2024/quizdocs/video') 
+    audio_Q = models.FileField(upload_to='2024/quizdocs/audio')
+    video_Q = models.FileField(upload_to='2024/quizdocs/video')
     updated_on = models.DateTimeField()
 
     class Meta:

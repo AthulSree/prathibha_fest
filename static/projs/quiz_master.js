@@ -7,7 +7,14 @@ $(document).ready(function(){
     loadQuiztonList();
 
     $(document).on('click','.editQuizton', function(){
-        $('#addNewModal').modal('show')
+        url = $(this).data('url');
+        class_level = $(this).data('classlevel');
+        $('#addNewModal').modal('show');
+        // When the modal is fully shown, perform actions on the dropdown
+        $('#addNewModal').on('shown.bs.modal', function () {
+          $('#classLevel').val(class_level);
+          $('#quizForm').attr('data-action', url);
+        });
     })
 
     $(document).on('click','#addQuizton', function(){
@@ -44,7 +51,7 @@ $(document).ready(function(){
         if(classLevel == ''){
             toastmessage('error', 'Class Level is mandatory')
         }
-            
+
         e.preventDefault();
         path = $(this).data('action');
         var formData = new FormData(this);
@@ -68,7 +75,7 @@ $(document).ready(function(){
                 }
             }
         })
-        
+
         // console.log(formData);
 
     })

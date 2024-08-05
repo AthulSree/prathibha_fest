@@ -34,7 +34,7 @@
 
 
 	<!-- Modal -->
-		<div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true"> 
+		<div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-sm modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -50,7 +50,8 @@
 						<div class="mb-3">
 							<div class="mb-3">
 								<label for="myDropdowni" class="form-label">Class</label>
-								<select id="myDropdowni" class="form-select" name="classLevel" id="classLevel">
+								<!-- <select id="myDropdowni" class="form-select" name="classLevel" id="classLevel"> -->
+								<select class="form-select" name="classLevel" id="classLevel">
 										<option value="">--select level--</option>
 									{% for class in classlist %}
 										<option value="{{class.class_level_abbr}}">{{class.class_level_abbr}}</option>
