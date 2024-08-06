@@ -54,6 +54,7 @@ $(document).ready(function(){
 
         e.preventDefault();
         path = $(this).data('action');
+        alert(path);
         var formData = new FormData(this);
         var csrf_token = $('#csrf_token').val();
         $.ajax({
@@ -67,6 +68,7 @@ $(document).ready(function(){
                 {
                     loadQuiztonList();
                     toastmessage('success', data.msg)
+                      $('#quizForm')[0].reset();
                     $('#addNewModal').modal('hide')
                 }
                 else

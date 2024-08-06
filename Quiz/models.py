@@ -25,4 +25,5 @@ class QuizMaster(models.Model):
         db_table = 'quiz_master'
 
     def __str__(self):
-        return f"{self.classId}-{self.id}"
+        # return f"{self.classId}-{self.id}"
+        return f"{self.id}"

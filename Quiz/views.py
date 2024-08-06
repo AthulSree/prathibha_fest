@@ -37,14 +37,13 @@ def saveQuizton(request):
         return JsonResponse({'status':300, 'msg':"Some error occurred"})
 
 def quizEdit(request, id):
-    quizdata = QuizMaster.objects.filter(id=id).values()
+    quizdata = QuizMaster.objects.get(id=id)
     if not quizdata:
         return JsonResponse({"error": "Quiz not found"}, status=404)
     else:
-        for data in quizdata:
-            image = data['image_Q']
-            audio = data['audio_Q']
-            video = data['video_Q']
+        image = quizdata.image_Q
+        audio = quizdata.audio_Q
+        video = quizdata.video_Q
 
     if 'classLevel' in request.POST:
         classLevel = request.POST['classLevel']
@@ -58,8 +57,16 @@ def quizEdit(request, id):
     if 'inputVideo' in request.FILES:
         video = request.FILES['inputVideo']
     try:
-        # QuizMaster.objects.filter(id=id).update(**updated_fields)
-        QuizMaster.objects.filter(id=id).update(classLevel=classLevel,image_Q=image,audio_Q=audio,video_Q=video, updated_on = timezone.now())
+        # # QuizMaster.objects.filter(id=id).update(**updated_fields)
+        # QuizMaster.objects.filter(id=id).update(classLevel=classLevel,image_Q=image,audio_Q=audio,video_Q=video, updated_on = timezone.now())
+
+        quizdata.classLevel = classLevel
+        quizdata.image_Q=image
+        quizdata.audio_Q=audio
+        quizdata.video_Q=video
+        quizdata.updated_on = timezone.now()
+        quizdata.save()
+
         return JsonResponse({'status':200, 'msg':"Updated successfully"})
     except Exception as e:
         print(e)
