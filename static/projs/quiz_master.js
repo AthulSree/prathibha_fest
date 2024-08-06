@@ -37,10 +37,6 @@ $(document).ready(function(){
     $('#quizForm').on('submit', function(e){
 
         var classLevel = $('#classLevel').val();
-        var image = $('#inputImage').val();
-        var audio = $('#inputAudio').val();
-        var video = $('#inputVideo').val();
-
         if(classLevel == ''){
             toastmessage('error', 'Class Level is mandatory')
         }
@@ -48,7 +44,6 @@ $(document).ready(function(){
         e.preventDefault();
         path = $(this).data('action');
         var formData = new FormData(this);
-        var csrf_token = $('#csrf_token').val();
         $.ajax({
             url : path,
             type: 'POST',
@@ -69,8 +64,6 @@ $(document).ready(function(){
             }
         })
         
-        // console.log(formData);
-
     })
 
     $(document).on('click','.viewQuizImage', function(){

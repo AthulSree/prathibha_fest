@@ -11,18 +11,18 @@ from django.utils import timezone # type: ignore
 def dashboard(request):
     today_date = date.today().strftime('%d-%m-%Y')
     context = {'today_date':today_date, 'menuactive':'dashboard'}
-    return render(request,'dashboard.html',context)
+    return render(request,'Quiz/dashboard.html',context)
 
 
 def quizMaster(request):
     classlist = ClassList.objects.values('class_level_abbr').distinct()
     context = {'menuactive':'quizMaster', 'classlist':classlist}
-    return render(request,'quiz_master.html',context)
+    return render(request,'Quiz/quiz_master.html',context)
 
 def quiztonList(request):
     quizton = QuizMaster.objects.all()
     context = {'quizton':quizton}
-    return render(request,'quizton_list.html',context)
+    return render(request,'Quiz/quizton_list.html',context)
 
 def saveQuizton(request):
     try:
@@ -40,7 +40,7 @@ def saveQuizton(request):
 def classList(request):
     classlists = ClassList.objects.all()
     context = {'menuactive':'classList','classlist':classlists}
-    return render(request,'class_list.html',context)
+    return render(request,'Quiz/class_list.html',context)
 
 
 def saveClasslist(request):
