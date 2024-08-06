@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MAX_UPLOAD_SIZE = 100000000
 
 # Application definition
 
@@ -81,11 +82,11 @@ WSGI_APPLICATION = 'prathibha_fest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prathibha_fest',
+        'NAME': 'pratibha_fest',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'athul@123',
         'HOST': 'localhost',  # or the IP address if on a different machine
-        'PORT': '3310',  # or whatever port you chose
+        'PORT': '3306',  # or whatever port you chose
     }
 }
 
