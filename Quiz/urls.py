@@ -15,5 +15,5 @@ urlpatterns = [
     path('quizEdit/<int:id>/', views.quizEdit, name="quiz_edit"),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

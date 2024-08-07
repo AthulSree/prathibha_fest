@@ -20,4 +20,5 @@ from django.urls import path,include
 urlpatterns = [
     path('',include('Quiz.urls')),
     path('admin/', admin.site.urls),
+    path('events/',include('Cultural_events.urls'))
 ]

@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "Quiz/base.html" %}
+
 {% load static %}
 
 
@@ -26,6 +27,12 @@
 					<a class="nav-link" href="{% url 'classList' %}">
 						<i class="ti-id-badge  menu-icon"></i>
 						<span class="menu-title">Class List</span>
+					</a>
+				</li>
+				<li class="nav-item {% if menuactive == 'eventsMaster' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'events_master' %}">
+						<i class="ti-agenda  menu-icon"></i>
+						<span class="menu-title">Events Master</span>
 					</a>
 				</li>
 
