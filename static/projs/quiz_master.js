@@ -72,13 +72,6 @@ $(document).ready(function(){
                 }
             }
         })
-<<<<<<< HEAD
-
-        // console.log(formData);
-
-=======
-        
->>>>>>> e849360a0c8fc5052c0f7bf470ba2c06b8ed7a47
     })
 
     $(document).on('click','.viewQuizImage', function(){
