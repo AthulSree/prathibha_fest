@@ -95,9 +95,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'prathibha_fest',
         'USER': 'root',
-        'PASSWORD': '8271',
+        # 'PASSWORD': '8271',# For windows
+        'PASSWORD': 'sr82an71', #for ubuntu
         'HOST': 'localhost',  # or the IP address if on a different machine
-        'PORT': '3306',  # or whatever port you chose
+        'PORT': '',  # or whatever port you chose
     }
 }
 

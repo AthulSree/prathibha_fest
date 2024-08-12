@@ -1,6 +1,14 @@
 from django.db import models
 
 # Create your models here.
+class AcademicYear(models.Model):
+    accYear = models.CharField(max_length=4)
+    desc = models.CharField(max_length=7)
+    class Meta:
+        db_table = 'academic_year'
+    def __str__(self):
+        return self.AccYear
+
 class ClassList(models.Model):
     classno = models.IntegerField(default=0,null=False)
     class_level = models.CharField(max_length=50)
@@ -20,6 +28,7 @@ class QuizMaster(models.Model):
     audio_Q = models.FileField(upload_to='2024/quizdocs/audio')
     video_Q = models.FileField(upload_to='2024/quizdocs/video')
     updated_on = models.DateTimeField()
+    acc_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'quiz_master'
@@ -27,3 +36,6 @@ class QuizMaster(models.Model):
     def __str__(self):
         # return f"{self.classId}-{self.id}"
         return f"{self.id}"
+
+
+
