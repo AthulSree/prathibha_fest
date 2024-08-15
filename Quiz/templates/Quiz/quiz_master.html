@@ -15,7 +15,13 @@
 			<div class="card-img-overlay">
 				<h5 class="card-title fs-4">Quiz Master</h5>
 				<p class="card-text d-flex justify-content-end">
-					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewModal">
+					<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewModal">
+						<b>
+							<i class="ti-plus  menu-icon">
+								Add</i>
+						</b>
+					</button> -->
+					<button type="button" class="btn btn-primary btn-modal" data-url="{% url 'save_quizton' id=0 %}">
 						<b>
 							<i class="ti-plus  menu-icon">
 								Add</i>
@@ -34,53 +40,9 @@
 
 
 	<!-- Modal -->
-		<div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+		<div class="modal fade" id="commonModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-sm modal-dialog-centered">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="addNewModalLabel">Add new Quizton
-					</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form class="row g-3 needs-validation formblockcontent" id="quizForm" novalidate data-action="{% url 'save_quizton' %}" method="post">
-						{% csrf_token %}
-						<input type="hidden" name="addedit" id="id_addedit" value="add">
-						<input type="hidden" name="classid" id="id_classid">
-						<div class="mb-3">
-							<div class="mb-3">
-								<label for="myDropdowni" class="form-label">Class</label>
-								<!-- <select id="myDropdowni" class="form-select" name="classLevel" id="classLevel"> -->
-								<select class="form-select" name="classLevel" id="classLevel">
-										<option value="">--select level--</option>
-									{% for class in classlist %}
-										<option value="{{class.class_level_abbr}}">{{class.class_level_abbr}}</option>
-									{% endfor %}
-								</select>
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label">Upload image</label>
-							<div class="input-group mb-3">
-								<input type="file" class="form-control" id="inputImage" name="inputImage" accept="image/*" >
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label">Upload audio</label>
-							<div class="input-group mb-3">
-								<input type="file" class="form-control" id="inputAudio" name="inputAudio" accept="audio/*" >
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label">Upload video</label>
-							<div class="input-group mb-3">
-								<input type="file" class="form-control" id="inputVideo"  name="inputVideo" accept="video/*">
-							</div>
-						</div>
-
-						<button type="submit" class="btn btn-primary">Save</button>
-					</form>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -1,13 +1,16 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class AcademicYear(models.Model):
     accYear = models.CharField(max_length=4)
     desc = models.CharField(max_length=7)
+    startDate = models.DateField(default=timezone.now)
+    endDate = models.DateField(default=timezone.now)
     class Meta:
         db_table = 'academic_year'
     def __str__(self):
-        return self.AccYear
+        return self.accYear
 
 class ClassList(models.Model):
     classno = models.IntegerField(default=0,null=False)

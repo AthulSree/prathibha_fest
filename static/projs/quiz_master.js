@@ -1,51 +1,48 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     $('#myDropdowni').select2({
-        dropdownParent: $('#addNewModal')
+        dropdownParent: $('#commonModal')
     });
 
     loadQuiztonList();
 
-    $(document).on('click','.editQuizton', function(){
+    $(document).on('click', '.btn-modal', function () {
         url = $(this).data('url');
-        class_level = $(this).data('classlevel');
-        $('#addNewModal').modal('show');
-        // When the modal is fully shown, perform actions on the dropdown
-        $('#addNewModal').on('shown.bs.modal', function () {
-          $('#classLevel').val(class_level);
-          $('#quizForm').attr('data-action', url);
-        });
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+                $('.modal-content').html(data)
+                $('#commonModal').modal('show')
+            }
+        })
     })
 
-    $(document).on('click','#addQuizton', function(){
-        $('#addNewModal').modal('show')
-    })
-
-    function loadQuiztonList(){
+    function loadQuiztonList() {
         url = $('#quiztonList').data('url');
         csrf_token = $('#csrf_token').val();
-        console.log(url);
         $.ajax({
-            url : url,
+            url: url,
             type: 'POST',
-            data:{'csrfmiddlewaretoken':csrf_token},
-            success: function(data){
+            data: { 'csrfmiddlewaretoken': csrf_token },
+            success: function (data) {
                 $('#quiztonList').html(data)
                 $('#quizTable').DataTable();
             }
         })
     }
-    // $('#addNewModal').on('shown.bs.modal', function () {
+    // $('#commonModal').on('shown.bs.modal', function () {
     //     $('#myDropdowni').select2({
-    //         dropdownParent: $('#addNewModal')
+    //         dropdownParent: $('#commonModal')
     //     });
     // });
 
-    $('#quizForm').on('submit', function(e){
+    $(document).on('submit', '#quizForm',function (e) {
 
         var classLevel = $('#classLevel').val();
-        if(classLevel == ''){
+        if (classLevel == '') {
             toastmessage('error', 'Class Level is mandatory')
+            return false;
         }
 
         e.preventDefault();
@@ -53,31 +50,28 @@ $(document).ready(function(){
         alert(path);
         var formData = new FormData(this);
         $.ajax({
-            url : path,
+            url: path,
             type: 'POST',
-            data:  formData,
+            data: formData,
             processData: false,
             contentType: false,
             success: function (data) {
-                if(data.status==200)
-                {
+                if (data.status == 200) {
                     loadQuiztonList();
                     toastmessage('success', data.msg)
-                      $('#quizForm')[0].reset();
-                    $('#addNewModal').modal('hide')
+                    $('#quizForm')[0].reset();
+                    $('#commonModal').modal('hide')
                 }
-                else
-                {
+                else {
                     toastmessage('error', data.msg)
                 }
             }
         })
     })
 
-    $(document).on('click','.viewQuizImage', function(){
+    $(document).on('click', '.viewQuizImage', function () {
         var img = $(this).data('imageurl');
-        console.log(img);
-        $("#quiz_image_body").attr("src",img)
+        $("#quiz_image_body").attr("src", img)
         $('#quizImageModal').modal('show')
     })
 
