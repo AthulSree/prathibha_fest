@@ -13,7 +13,7 @@ def dashboard(request):
     today_date = date.today().strftime('%d-%m-%Y')
     context = {'today_date':today_date, 'menuactive':'dashboard'}
 
-    # START Academic year creation section 
+    # START Academic year creation section
     current_date = datetime.now()
     current_year = current_date.year
     # Format the start and end dates for the academic year
@@ -34,7 +34,7 @@ def dashboard(request):
             'endDate': acEndDate
         }
     )
-    # END Academic year creation section 
+    # END Academic year creation section
     return render(request,'Quiz/dashboard.html',context)
 
 
@@ -50,11 +50,9 @@ def quiztonList(request):
 
 def saveQuizton(request, id):
     acYear = AcademicYear.objects.last()
-    print(1)
     if(request.method=='POST'):
         try:
             if(id==0):
-                print(id)
                 classLevel = request.POST.get('classLevel')
                 image = request.FILES.get('inputImage')
                 audio = request.FILES.get('inputAudio')
@@ -92,20 +90,27 @@ def saveQuizton(request, id):
 
                 return JsonResponse({'status':200, 'msg':"Updated successfully"})
         except Exception as e:
-            print(e)
             return JsonResponse({'status':300, 'msg':"Some error occurred"})
     else:
         classlist = ClassList.objects.values('class_level_abbr').distinct()
-        quizdata = QuizMaster.objects.get(id=id)
-        if(quizdata):
+        try:
+            quizdata = QuizMaster.objects.get(id=id)
             id = quizdata.id
             classLevel = quizdata.classLevel
-        else:
+        except:
             id =0
             classLevel=''
-        context = {'classlist':classlist, 'id':id, 'classLevel':classLevel}
+        context = {'classlist':classlist, 'id':id, 'class_level':classLevel}
 
         return render(request,'Quiz/quiz_form.html',context)
+
+def deleteQuizton(request, id):
+    try:
+        quizData=QuizMaster.objects.get(id=id)
+        quizData.delete()
+        return JsonResponse({'status':200, 'msg':"Deleted successfully"})
+    except:
+        return JsonResponse({'status':300, 'msg':"Error Occured"})
 
 
 def classList(request):

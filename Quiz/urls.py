@@ -11,6 +11,7 @@ urlpatterns = [
     path('class_list',views.classList, name='classList'),
     path('save_classlist', views.saveClasslist, name='save_classlist'),
     path('saveQuizton/<int:id>/', views.saveQuizton, name="save_quizton"),
+    path('deleteQuizton/<int:id>/', views.saveQuizton, name="delete_quizton"),
     path('quiztonList', views.quiztonList, name="quizton_list"),
 ]
 

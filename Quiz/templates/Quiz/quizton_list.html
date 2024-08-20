@@ -1,8 +1,4 @@
 {% load custom_filter %}
-
-
-
-
 <table id="quizTable" class="display" style="width:100%;text-align:center !important;">
 	<thead>
 		<tr>
@@ -57,6 +53,10 @@
 				<span class="badge bg-info text-dark btn-modal" data-url="{% url 'save_quizton' id=quizdata.id %}" data-classLevel="{{quizdata.classLevel}}">
 					<i class="ti-pencil menu-icon text-light iconstyle">
 						Edit</i>
+				</span>
+				<span class="badge bg-danger text-dark btn-modal" data-url="{% url 'delete_quizton' id=quizdata.id %}" data-classLevel="{{quizdata.classLevel}}">
+					<i class="ti-trash menu-icon text-light iconstyle">
+					Delete</i>
 				</span>
 			</td>
 		</tr>

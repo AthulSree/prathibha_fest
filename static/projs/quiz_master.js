@@ -42,12 +42,10 @@ $(document).ready(function () {
         var classLevel = $('#classLevel').val();
         if (classLevel == '') {
             toastmessage('error', 'Class Level is mandatory')
-            return false;
         }
 
         e.preventDefault();
         path = $(this).data('action');
-        alert(path);
         var formData = new FormData(this);
         $.ajax({
             url: path,
