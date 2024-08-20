@@ -110,7 +110,22 @@ $(document).ready(function () {
     });
 
 
-
+    $(document).on('click','.dltBtn', function () {
+        var path = $(this).data('url');
+        $.ajax({
+            type: "GET",
+            url: path,
+            success: function (data) {
+                if (data.status == 200) {
+                    loadQuiztonList();
+                    toastmessage('success', data.msg)
+                }
+                else {
+                    toastmessage('error', data.msg)
+                }
+            }
+        });
+    });
 
 
 })

@@ -109,7 +109,8 @@ def deleteQuizton(request, id):
         quizData=QuizMaster.objects.get(id=id)
         quizData.delete()
         return JsonResponse({'status':200, 'msg':"Deleted successfully"})
-    except:
+    except Exception as e:
+        print(e)
         return JsonResponse({'status':300, 'msg':"Error Occured"})
 
 
