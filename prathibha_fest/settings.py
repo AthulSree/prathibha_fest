@@ -79,28 +79,28 @@ WSGI_APPLICATION = 'prathibha_fest.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'pratibha_fest',
-#         'USER': 'root',
-#         'PASSWORD': 'athul@123',
-#         'HOST': 'localhost',  # or the IP address if on a different machine
-#         'PORT': '3306',  # or whatever port you chose
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prathibha_fest',
+        'NAME': 'pratibha_fest',
         'USER': 'root',
-        # 'PASSWORD': '8271',# For windows
-        'PASSWORD': 'sr82an71', #for ubuntu
+        'PASSWORD': 'athul@123',
         'HOST': 'localhost',  # or the IP address if on a different machine
-        'PORT': '',  # or whatever port you chose
+        'PORT': '3306',  # or whatever port you chose
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'prathibha_fest',
+#         'USER': 'root',
+#         # 'PASSWORD': '8271',# For windows
+#         'PASSWORD': 'sr82an71', #for ubuntu
+#         'HOST': 'localhost',  # or the IP address if on a different machine
+#         'PORT': '',  # or whatever port you chose
+#     }
+# }
 
 
 # Password validation
