@@ -30204,3 +30204,8 @@ table.dataTable tbody td.select-checkbox:after {
     border-color: black;
   }
 }
+
+
+.errorlist{
+  color:red;
+}

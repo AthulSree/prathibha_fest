@@ -1,0 +1,27 @@
+<table id="commonTable" class="display" style="width:100%;text-align:center !important;">
+	<thead>
+		<tr>
+			<th class="text-center">#</th>
+			<th class="text-center">Academic Year</th>
+			<th class="text-center">Class</th>
+			<th class="text-center">Student Name</th>
+			<th class="text-center">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for student in students %}
+		<tr class="text-center">
+			<td>{{forloop.counter}}</td>
+			<td>{{student.academic_yr}}</td>
+			<td>{{student.class_list}}</td>
+			<td>{{student.student_name}}</td>
+			<td>
+				<span class="badge bg-info text-dark btn-modal" data-url="{% url 'save_student' id=student.id %}">
+					<i class="ti-pencil menu-icon text-light iconstyle">
+						Edit</i>
+				</span>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

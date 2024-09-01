@@ -10,7 +10,7 @@ class AcademicYear(models.Model):
     class Meta:
         db_table = 'academic_year'
     def __str__(self):
-        return self.accYear
+        return self.desc
 
 class ClassList(models.Model):
     classno = models.IntegerField(default=0,null=False)
@@ -21,7 +21,8 @@ class ClassList(models.Model):
         db_table = 'class_list'
 
     def __str__(self):
-        return f"{self.classno}-{self.class_level}"
+        # return f"{self.classno}-{self.class_level}"
+        return f"{self.classno}"
 
 
 class QuizMaster(models.Model):
