@@ -80,6 +80,17 @@ WSGI_APPLICATION = 'prathibha_fest.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'pratibha_fest',
+#         'USER': 'root',
+#         'PASSWORD': 'athul@123',
+#         'HOST': 'localhost',  # or the IP address if on a different machine
+#         'PORT': '3306',  # or whatever port you chose
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -128,7 +139,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # As the static dir is moved out of all apps the below loc should be included
-STATICFILES_DIRS = [  
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
