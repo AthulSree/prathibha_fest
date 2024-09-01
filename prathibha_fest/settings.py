@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Quiz',
-    'Cultural_events'
+    'Cultural_events',
+    'student'
 ]
 
 MIDDLEWARE = [
@@ -82,11 +83,11 @@ WSGI_APPLICATION = 'prathibha_fest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pratibha_fest',
+        'NAME': 'prathibha_fest',
         'USER': 'root',
-        'PASSWORD': 'athul@123',
+        'PASSWORD': 'root',
         'HOST': 'localhost',  # or the IP address if on a different machine
-        'PORT': '3306',  # or whatever port you chose
+        'PORT': '3310',  # or whatever port you chose
     }
 }
 

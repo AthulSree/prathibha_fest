@@ -29,6 +29,12 @@
 						<span class="menu-title">Class List</span>
 					</a>
 				</li>
+				<li class="nav-item {% if menuactive == 'classList' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'studentMaster' %}">
+						<i class="ti-user  menu-icon"></i>
+						<span class="menu-title">Student List</span>
+					</a>
+				</li>
 				<li class="nav-item {% if menuactive == 'eventsMaster' %} active {% endif %}">
 					<a class="nav-link" href="{% url 'events_master' %}">
 						<i class="ti-agenda  menu-icon"></i>
