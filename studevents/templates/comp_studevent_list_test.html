@@ -1,0 +1,28 @@
+<table id="commonTable" class="display" style="width:100%;text-align:center !important;">
+	<thead>
+		<tr>
+			<th class="text-center">#</th>
+			<th class="text-center">Class</th>
+			<th class="text-center">Participant</th>
+			<th class="text-center">Event</th>
+			<th class="text-center">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for class in stud_events %}
+			<tr class="text-center">
+				<td>{{forloop.counter}}</td>
+				<td>{{class.Standard}}</td>
+				<td>{{class.Student}}</td>
+				<td>{{class.Event}}</td>
+				<td>
+<span class="badge bg-info text-dark btn-modal" data-url="{% url 'compStudeventsSaveTest' id=class.id %}">
+
+						<i class="ti-pencil menu-icon text-light iconstyle">
+							Edit</i>
+					</span>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>

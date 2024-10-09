@@ -29,16 +29,25 @@
 						<span class="menu-title">Class List</span>
 					</a>
 				</li>
-				<li class="nav-item {% if menuactive == 'classList' %} active {% endif %}">
-					<a class="nav-link" href="{% url 'studentMaster' %}">
-						<i class="ti-user  menu-icon"></i>
-						<span class="menu-title">Student List</span>
-					</a>
-				</li>
+			
 				<li class="nav-item {% if menuactive == 'eventsMaster' %} active {% endif %}">
 					<a class="nav-link" href="{% url 'events_master' %}">
 						<i class="ti-agenda  menu-icon"></i>
 						<span class="menu-title">Events Master</span>
+					</a>
+				</li>
+
+				<li class="nav-item {% if menuactive == 'studentsList' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'students_index' %}">
+						<i class="ti-agenda  menu-icon"></i>
+						<span class="menu-title">Students List</span>
+					</a>
+				</li>
+
+				<li class="nav-item {% if menuactive == 'studevents' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'comp_studevents_index' %}">
+						<i class="ti-control-shuffle  menu-icon"></i>
+						<span class="menu-title">Competitive <br> Events</span>
 					</a>
 				</li>
 

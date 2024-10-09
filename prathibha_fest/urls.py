@@ -21,5 +21,6 @@ urlpatterns = [
     path('',include('Quiz.urls')),
     path('admin/', admin.site.urls),
     path('events/',include('Cultural_events.urls')),
-    path('student/',include('student.urls'))
+    path('students/',include('Students.urls')),
+    path('studevents/',include('studevents.urls')),
 ]

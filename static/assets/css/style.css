@@ -27470,27 +27470,50 @@ table.dataTable tbody td.select-checkbox:after {
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
-  color: color(white);
-}
+  background: gray;
+    color: white;
+    font-weight: bold;
+    position: inherit;
+    font-size: inherit;
+  }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice:nth-child(5n+1) {
-  background: #4B49AC;
-}
+  background: gray;
+    color: white;
+      position: inherit;
+      font-size: inherit;
+  }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice:nth-child(5n+2) {
-  background: #57B657;
+  background: gray;
+  color: white;
+  font-weight: bold;
+      position: inherit;
+      font-size: inherit;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice:nth-child(5n+3) {
-  background: #248AFD;
-}
+  background: gray;
+    color: white;
+    font-weight: bold;
+        position: inherit;
+        font-size: inherit;
+  }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice:nth-child(5n+4) {
-  background: #FF4747;
-}
+  background: gray;
+    color: white;
+    font-weight: bold;
+        position: inherit;
+        font-size: inherit;
+  }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice:nth-child(5n+5) {
-  background: #FFC100;
+  background: gray;
+  color: white;
+    font-weight: bold;
+        position: inherit;
+        font-size: inherit;
 }
 
 .select2-container--default .select2-selection__arrow {
@@ -30208,4 +30231,9 @@ table.dataTable tbody td.select-checkbox:after {
   50% {
     border-color: black;
   }
+}
+
+
+.errorlist{
+  color:red;
 }

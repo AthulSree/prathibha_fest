@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="addNewModalLabel">Add new Event</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form class="row g-3 needs-validation formblockcontent" id="commonForm" data-action="{% url 'save_student' id=id %}"
+        method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <div class="mb-3">
+                <label for="id_name">{{ form.class_list.label }}</label>
+                {{ form.class_list }}
+                {% if form.class_list.errors %}
+                <div class="error">
+                    {{ form.class_list.errors }}
+                </div>
+                {% endif %}
+                <br>
+                <label for="id_name">{{ form.student_name.label }}</label>
+                {{ form.student_name }}
+                {% if form.student_name.errors %}
+                <div class="error">
+                    {{ form.student_name.errors }}
+                </div>
+                {% endif %}
+
+                {% if form.non_field_errors %}
+                <div class="error">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary commonSubmit">Save</button>
+    </form>
+</div>

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Quiz',
     'Cultural_events',
-    'student'
+    'Students',
+    'studevents'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'prathibha_fest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pratibha_fest',
+        'NAME': 'prathibha_fest',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',  # or the IP address if on a different machine
