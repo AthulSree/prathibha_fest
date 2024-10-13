@@ -84,9 +84,10 @@ WSGI_APPLICATION = 'prathibha_fest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prathibha_fest',
+        'NAME': 'prathibha_fest_main',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'sr82an71', #ubuntu
+        #'PASSWORD': 'sr82@n71', #windows
         'HOST': 'localhost',  # or the IP address if on a different machine
         'PORT': '3310',  # or whatever port you chose
     }

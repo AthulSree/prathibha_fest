@@ -4,6 +4,11 @@ from Quiz.models import ClassList
 from ..models import Students
 
 class StudentForm(forms.ModelForm):
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+    ]
+
     class_list = forms.ModelChoiceField(
                 queryset=ClassList.objects.all(),
                 widget=forms.Select(attrs={
@@ -16,11 +21,18 @@ class StudentForm(forms.ModelForm):
             'placeholder': 'Enter your name',
         })
     )
+
+    gender = forms.ChoiceField(
+        choices=GENDER_CHOICES,
+        widget=forms.RadioSelect(attrs={
+            'class': 'inline-radio',
+        })
+    )
         
     
     class Meta:
         model=Students
-        fields=['class_list', 'student_name']
+        fields=['class_list', 'student_name', 'gender']
 
     # def clean(self):
     #     cleaned_data = super().clean()

@@ -24,6 +24,14 @@
                 </div>
                 {% endif %}
 
+                <label for="id_name">{{ form.gender.label }}</label>
+                {{ form.gender }}
+                {% if form.gender.errors %}
+                <div class="error">
+                    {{ form.gender.errors }}
+                </div>
+                {% endif %}
+
                 {% if form.non_field_errors %}
                 <div class="error">
                     {{ form.non_field_errors }}

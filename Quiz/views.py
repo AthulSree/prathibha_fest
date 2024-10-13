@@ -90,6 +90,7 @@ def saveQuizton(request, id):
 
                 return JsonResponse({'status':200, 'msg':"Updated successfully"})
         except Exception as e:
+            print(e)
             return JsonResponse({'status':300, 'msg':"Some error occurred"})
     else:
         classlist = ClassList.objects.values('class_level_abbr').distinct()

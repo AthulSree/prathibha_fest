@@ -7,6 +7,7 @@ class Students(models.Model):
     class_list = models.ForeignKey(ClassList, on_delete = models.CASCADE)
     academic_yr = models.ForeignKey(AcademicYear, on_delete= models.CASCADE)
     student_name = models.CharField(max_length=30)
+    gender = models.CharField(max_length=1, null=True)
 
     class Meta:
         db_table ='students'
