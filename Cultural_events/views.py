@@ -2,7 +2,9 @@ from django.shortcuts import render #type: ignore
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect # type: ignore
 from django.urls import reverse  # type: ignore
 from django.utils import timezone
-from .models import Events_master
+from .models import *
+from Cultural_events.form.EventForm import EventForm
+from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
 
@@ -52,3 +54,38 @@ def save_events(request, id):
         context = {'id':id, 'event':event, 'group':group, 'comp':comp}
 
         return render(request,'Cultural_events/events_master_form.html',context)
+
+
+def cultural_index(request):
+    context = {'menuactive':'culturalEvnts', 'events_list': []}
+    return render(request,'Cultural_events/events_index.html',context)
+def cultral_list(request):
+    return render(request, 'Cultural_events/events_list.html')
+def save_cultural_event(request, id):
+    academic_year = AcademicYear.objects.latest('pk')
+    if id == 0:
+        events = None
+    else:
+        events = get_object_or_404(CulturalEvents, pk=id)
+    if(request.method == 'POST'):
+        if events:
+            form = EventForm(request.POST, instance=events)
+        else:
+            form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = CulturalEvents(
+                # AccYear=form.cleaned_data['AccYear'],
+                AccYear = academic_year,
+                eventId=form.cleaned_data['eventId'],
+                classId=form.cleaned_data['classId'],
+                EventName=form.cleaned_data['EventName'],
+                EventDesc=form.cleaned_data['EventDesc'],
+                EventFile=form.cleaned_data['EventFile']
+            )
+            event.save()
+            return JsonResponse({'status':200, 'msg':"Operation completed successfully"})
+        else:
+            return render(request, 'Cultural_events/cultural_event_form.html', {'form': form, 'id':id})
+    else:
+        form = EventForm()
+        return render(request, 'Cultural_events/cultural_event_form.html', {'form':form, 'id':id})

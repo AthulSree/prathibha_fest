@@ -7,6 +7,9 @@ from django.conf.urls.static import static # type: ignore
 urlpatterns = [
     path('', views.events_master, name='events_master'),
     path('saveEventMaster/<int:id>/', views.save_events, name="save_event_master"),
+    path('index', views.cultural_index, name='cultural_events_index'),
+    path('list', views.cultral_list, name='cultural_events_list'),
+    path('save_cultural_event/<int:id>/', views.save_cultural_event, name='save_cultural_event'),
 
 ]
 

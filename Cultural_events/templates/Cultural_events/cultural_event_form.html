@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="addNewModalLabel">Add new Event</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form class="row g-3 needs-validation formblockcontent" id="commonForm" data-action="{% url 'save_cultural_event' id=id %}"
+        method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="error">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <!-- <div class="form-group">
+            <label for="AccYear">Academic Year</label>
+            {{ form.AccYear }}
+        </div> -->
+        <div class="form-group">
+            <label for="classId">Class</label>
+            {{ form.classId }}
+        </div>
+        <div class="form-group">
+            <label for="eventId">Event</label>
+            {{ form.eventId }}
+        </div>
+        <div class="form-group">
+            <label for="EventName">Event Name</label>
+            {{ form.EventName }}
+        </div>
+        <div class="form-group">
+            <label for="EventDesc">Event Description</label>
+            {{ form.EventDesc }}
+        </div>
+        <div class="form-group">
+            <label for="EventFile">Upload Event File</label>
+            {{ form.EventFile }}
+        </div>
+
+        <button type="button" class="btn btn-primary commonSubmit">Save</button>
+    </form>
+</div>

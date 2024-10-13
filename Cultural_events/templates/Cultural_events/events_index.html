@@ -1,0 +1,41 @@
+{% extends "Quiz/menu.html" %}
+
+{% load static %}
+
+{% block bodycontent %}
+<div class="content-wrapper">
+	<div class="card mb-3">
+		<img src="{% static 'assets/images/dashboard/people.svg' %}" class="card-img-top"
+			style="background-color:#03346E" alt="...">
+		<div class="card-img-overlay">
+			<h5 class="card-title fs-4">Program Details</h5>
+			<p class="card-text d-flex justify-content-end">
+				<button type="button" class="btn btn-primary btn-modal" data-url="{% url 'save_cultural_event' id=0 %}">
+					<b>
+						<i class="ti-plus  menu-icon">
+							Add</i>
+					</b>
+				</button>
+			</p>
+		</div>
+
+		<div class="card-body dataBody" data-url="{% url 'cultural_events_list' %}">
+			
+		</div>
+	</div>
+</div>
+
+{# ------ Modal-------- #}
+
+
+<!-- Modal -->
+<div class="modal fade" id="commonModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'projs/generic.js' %}"></script>
+{% endblock %}

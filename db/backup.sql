@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
--- Host: localhost    Database: prathibha_fest
+-- Host: localhost    Database: prathibha_fest_main
 -- ------------------------------------------------------
 -- Server version	8.0.36-0ubuntu0.22.04.1
 
@@ -29,7 +29,7 @@ CREATE TABLE `academic_year` (
   `endDate` date NOT NULL,
   `startDate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add class list',7,'add_classlist'),(26,'Can change class list',7,'change_classlist'),(27,'Can delete class list',7,'delete_classlist'),(28,'Can view class list',7,'view_classlist'),(29,'Can add quiz master',8,'add_quizmaster'),(30,'Can change quiz master',8,'change_quizmaster'),(31,'Can delete quiz master',8,'delete_quizmaster'),(32,'Can view quiz master',8,'view_quizmaster'),(33,'Can add events_master',9,'add_events_master'),(34,'Can change events_master',9,'change_events_master'),(35,'Can delete events_master',9,'delete_events_master'),(36,'Can view events_master',9,'view_events_master'),(37,'Can add academic year',10,'add_academicyear'),(38,'Can change academic year',10,'change_academicyear'),(39,'Can delete academic year',10,'delete_academicyear'),(40,'Can view academic year',10,'view_academicyear'),(41,'Can add students',11,'add_students'),(42,'Can change students',11,'change_students'),(43,'Can delete students',11,'delete_students'),(44,'Can view students',11,'view_students');
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add class list',7,'add_classlist'),(26,'Can change class list',7,'change_classlist'),(27,'Can delete class list',7,'delete_classlist'),(28,'Can view class list',7,'view_classlist'),(29,'Can add quiz master',8,'add_quizmaster'),(30,'Can change quiz master',8,'change_quizmaster'),(31,'Can delete quiz master',8,'delete_quizmaster'),(32,'Can view quiz master',8,'view_quizmaster'),(33,'Can add academic year',9,'add_academicyear'),(34,'Can change academic year',9,'change_academicyear'),(35,'Can delete academic year',9,'delete_academicyear'),(36,'Can view academic year',9,'view_academicyear'),(37,'Can add events_master',10,'add_events_master'),(38,'Can change events_master',10,'change_events_master'),(39,'Can delete events_master',10,'delete_events_master'),(40,'Can view events_master',10,'view_events_master'),(41,'Can add students',11,'add_students'),(42,'Can change students',11,'change_students'),(43,'Can delete students',11,'delete_students'),(44,'Can view students',11,'view_students'),(45,'Can add comp stud events',12,'add_compstudevents'),(46,'Can change comp stud events',12,'change_compstudevents'),(47,'Can delete comp stud events',12,'delete_compstudevents'),(48,'Can view comp stud events',12,'view_compstudevents'),(49,'Can add form test',13,'add_formtest'),(50,'Can change form test',13,'change_formtest'),(51,'Can delete form test',13,'delete_formtest'),(52,'Can view form test',13,'view_formtest'),(53,'Can add cultural events',14,'add_culturalevents'),(54,'Can change cultural events',14,'change_culturalevents'),(55,'Can delete cultural events',14,'delete_culturalevents'),(56,'Can view cultural events',14,'view_culturalevents');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,6 +238,77 @@ INSERT INTO `class_list` VALUES (1,'Lower Primary','LP',1),(2,'Lower Primary','L
 UNLOCK TABLES;
 
 --
+-- Table structure for table `comp_student_events`
+--
+
+DROP TABLE IF EXISTS `comp_student_events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comp_student_events` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `pgm_id` int NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `academic_year_id` bigint NOT NULL,
+  `event_id` bigint NOT NULL,
+  `student_id` bigint DEFAULT NULL,
+  `standard_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `comp_student_events_academic_year_id_972f73db_fk_academic_` (`academic_year_id`),
+  KEY `comp_student_events_event_id_2db9da2b_fk_events_master_id` (`event_id`),
+  KEY `comp_student_events_student_id_5458b78a_fk_students_id` (`student_id`),
+  KEY `comp_student_events_standard_id_e4c8ddfd_fk_class_list_id` (`standard_id`),
+  CONSTRAINT `comp_student_events_academic_year_id_972f73db_fk_academic_` FOREIGN KEY (`academic_year_id`) REFERENCES `academic_year` (`id`),
+  CONSTRAINT `comp_student_events_event_id_2db9da2b_fk_events_master_id` FOREIGN KEY (`event_id`) REFERENCES `events_master` (`id`),
+  CONSTRAINT `comp_student_events_standard_id_e4c8ddfd_fk_class_list_id` FOREIGN KEY (`standard_id`) REFERENCES `class_list` (`id`),
+  CONSTRAINT `comp_student_events_student_id_5458b78a_fk_students_id` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comp_student_events`
+--
+
+LOCK TABLES `comp_student_events` WRITE;
+/*!40000 ALTER TABLE `comp_student_events` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comp_student_events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cultural_events`
+--
+
+DROP TABLE IF EXISTS `cultural_events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cultural_events` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `EventName` varchar(200) NOT NULL,
+  `EventDesc` longtext NOT NULL,
+  `EventFile` varchar(100) NOT NULL,
+  `updatedOn` datetime(6) NOT NULL,
+  `AccYear_id` bigint NOT NULL,
+  `classId_id` bigint NOT NULL,
+  `eventId_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cultural_events_AccYear_id_131d199b_fk_academic_year_id` (`AccYear_id`),
+  KEY `cultural_events_classId_id_c995077e_fk_class_list_id` (`classId_id`),
+  KEY `cultural_events_eventId_id_b450a010_fk_events_master_id` (`eventId_id`),
+  CONSTRAINT `cultural_events_AccYear_id_131d199b_fk_academic_year_id` FOREIGN KEY (`AccYear_id`) REFERENCES `academic_year` (`id`),
+  CONSTRAINT `cultural_events_classId_id_c995077e_fk_class_list_id` FOREIGN KEY (`classId_id`) REFERENCES `class_list` (`id`),
+  CONSTRAINT `cultural_events_eventId_id_b450a010_fk_events_master_id` FOREIGN KEY (`eventId_id`) REFERENCES `events_master` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cultural_events`
+--
+
+LOCK TABLES `cultural_events` WRITE;
+/*!40000 ALTER TABLE `cultural_events` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cultural_events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `django_admin_log`
 --
 
@@ -284,7 +355,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,7 +364,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(9,'Cultural_events','events_master'),(10,'Quiz','academicyear'),(7,'Quiz','classlist'),(8,'Quiz','quizmaster'),(6,'sessions','session'),(11,'Students','students');
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(14,'Cultural_events','culturalevents'),(10,'Cultural_events','events_master'),(9,'Quiz','academicyear'),(7,'Quiz','classlist'),(8,'Quiz','quizmaster'),(6,'sessions','session'),(11,'Students','students'),(12,'studevents','compstudevents'),(13,'studevents','formtest');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +381,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,7 +390,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'Cultural_events','0001_initial','2024-08-10 10:03:46.055043'),(2,'Quiz','0001_initial','2024-08-10 10:03:46.215139'),(3,'Quiz','0002_remove_classlist_class_abbr_and_more','2024-08-10 10:03:46.390961'),(4,'Quiz','0003_quizmaster','2024-08-10 10:03:46.563970'),(5,'Quiz','0004_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-08-10 10:03:46.589543'),(6,'Quiz','0005_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-08-10 10:03:46.630044'),(7,'Quiz','0006_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-08-10 10:03:46.668780'),(8,'Quiz','0007_remove_quizmaster_classid_quizmaster_classlevel','2024-08-10 10:03:46.942266'),(9,'contenttypes','0001_initial','2024-08-10 10:03:47.023973'),(10,'auth','0001_initial','2024-08-10 10:03:47.972510'),(11,'admin','0001_initial','2024-08-10 10:03:48.283680'),(12,'admin','0002_logentry_remove_auto_add','2024-08-10 10:03:48.350050'),(13,'admin','0003_logentry_add_action_flag_choices','2024-08-10 10:03:48.405216'),(14,'contenttypes','0002_remove_content_type_name','2024-08-10 10:03:48.599638'),(15,'auth','0002_alter_permission_name_max_length','2024-08-10 10:03:48.713093'),(16,'auth','0003_alter_user_email_max_length','2024-08-10 10:03:48.776666'),(17,'auth','0004_alter_user_username_opts','2024-08-10 10:03:48.800580'),(18,'auth','0005_alter_user_last_login_null','2024-08-10 10:03:48.917396'),(19,'auth','0006_require_contenttypes_0002','2024-08-10 10:03:48.922786'),(20,'auth','0007_alter_validators_add_error_messages','2024-08-10 10:03:48.944441'),(21,'auth','0008_alter_user_username_max_length','2024-08-10 10:03:49.105489'),(22,'auth','0009_alter_user_last_name_max_length','2024-08-10 10:03:49.228959'),(23,'auth','0010_alter_group_name_max_length','2024-08-10 10:03:49.296450'),(24,'auth','0011_update_proxy_permissions','2024-08-10 10:03:49.340415'),(25,'auth','0012_alter_user_first_name_max_length','2024-08-10 10:03:49.532021'),(26,'sessions','0001_initial','2024-08-10 10:03:49.638869'),(27,'Quiz','0008_academicyear_quizmaster_acc_year','2024-08-12 14:41:01.932682'),(28,'Quiz','0009_academicyear_enddate_academicyear_startdate','2024-08-15 08:57:43.922858'),(29,'Students','0001_initial','2024-08-31 15:37:14.834150');
+INSERT INTO `django_migrations` VALUES (1,'Cultural_events','0001_initial','2024-10-11 12:08:16.632023'),(2,'Quiz','0001_initial','2024-10-11 12:08:16.687804'),(3,'Quiz','0002_remove_classlist_class_abbr_and_more','2024-10-11 12:08:16.857407'),(4,'Quiz','0003_quizmaster','2024-10-11 12:08:16.980455'),(5,'Quiz','0004_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:16.996971'),(6,'Quiz','0005_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:17.015345'),(7,'Quiz','0006_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:17.046977'),(8,'Quiz','0007_remove_quizmaster_classid_quizmaster_classlevel','2024-10-11 12:08:17.310055'),(9,'Quiz','0008_academicyear_quizmaster_acc_year','2024-10-11 12:08:17.499327'),(10,'Quiz','0009_academicyear_enddate_academicyear_startdate','2024-10-11 12:08:17.676488'),(11,'Students','0001_initial','2024-10-11 12:08:17.874083'),(12,'contenttypes','0001_initial','2024-10-11 12:08:17.950345'),(13,'auth','0001_initial','2024-10-11 12:08:18.826416'),(14,'admin','0001_initial','2024-10-11 12:08:19.047354'),(15,'admin','0002_logentry_remove_auto_add','2024-10-11 12:08:19.072221'),(16,'admin','0003_logentry_add_action_flag_choices','2024-10-11 12:08:19.096841'),(17,'contenttypes','0002_remove_content_type_name','2024-10-11 12:08:19.254643'),(18,'auth','0002_alter_permission_name_max_length','2024-10-11 12:08:19.354396'),(19,'auth','0003_alter_user_email_max_length','2024-10-11 12:08:19.419405'),(20,'auth','0004_alter_user_username_opts','2024-10-11 12:08:19.450969'),(21,'auth','0005_alter_user_last_login_null','2024-10-11 12:08:19.573668'),(22,'auth','0006_require_contenttypes_0002','2024-10-11 12:08:19.578805'),(23,'auth','0007_alter_validators_add_error_messages','2024-10-11 12:08:19.602597'),(24,'auth','0008_alter_user_username_max_length','2024-10-11 12:08:19.741592'),(25,'auth','0009_alter_user_last_name_max_length','2024-10-11 12:08:19.887509'),(26,'auth','0010_alter_group_name_max_length','2024-10-11 12:08:19.951911'),(27,'auth','0011_update_proxy_permissions','2024-10-11 12:08:20.012476'),(28,'auth','0012_alter_user_first_name_max_length','2024-10-11 12:08:20.141082'),(29,'sessions','0001_initial','2024-10-11 12:08:20.220300'),(30,'studevents','0001_initial','2024-10-11 12:08:20.422692'),(31,'studevents','0002_rename_studeevents_studevents','2024-10-11 12:08:20.474263'),(32,'studevents','0003_compstudevents_delete_studevents','2024-10-11 12:08:20.797974'),(33,'studevents','0004_remove_compstudevents_student_compstudevents_student','2024-10-11 12:08:21.502559'),(34,'studevents','0005_remove_compstudevents_student_compstudevents_student','2024-10-11 12:08:21.751573'),(35,'studevents','0006_compstudevents_standard','2024-10-11 12:08:21.997741'),(36,'studevents','0007_formtest','2024-10-11 12:08:22.243284'),(37,'studevents','0008_rename_standard_formtest_standard_formtest_event','2024-10-11 12:08:22.676770'),(38,'studevents','0009_formtest_student','2024-10-11 12:08:22.851812'),(39,'Students','0002_students_gender','2024-10-13 14:18:40.520775'),(40,'Cultural_events','0002_culturalevents','2024-10-13 15:02:32.103259');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,7 +433,7 @@ CREATE TABLE `events_master` (
   `group_item` varchar(1) NOT NULL,
   `updated_on` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -371,8 +442,39 @@ CREATE TABLE `events_master` (
 
 LOCK TABLES `events_master` WRITE;
 /*!40000 ALTER TABLE `events_master` DISABLE KEYS */;
-INSERT INTO `events_master` VALUES (1,'കവിതാപാരായണം ','Y','N','2024-09-01 09:24:05.278514'),(2,'ഭരതനാട്യം','N','N','2024-08-20 09:15:25.363733'),(3,'നാടൻപാട്ട് ','Y','Y','2024-08-20 09:15:45.260934'),(4,'സമൂഹഗാനം','Y','Y','2024-08-20 09:14:01.129778');
+INSERT INTO `events_master` VALUES (1,'ഓർമ പരിശോധന','Y','N','2024-10-11 12:20:13.056970'),(2,'ക്വിസ് ','Y','N','2024-10-11 12:21:12.425710'),(3,'കസേര ചുറ്റൽ ','Y','N','2024-10-11 12:21:40.292966'),(4,'പുന്നക്ക പറക്കൽ','Y','N','2024-10-11 12:22:10.943113'),(5,'റൊട്ടി കടി ','Y','N','2024-10-11 12:23:01.134661'),(6,'ആനയ്ക്ക് വാല് വരയ്ക്കൽ','Y','N','2024-10-11 12:23:49.928327'),(7,'സുന്ദരന് മീശ വരയ്ക്കൽ ','Y','N','2024-10-11 12:24:45.971436'),(8,'സുന്ദരിയ്ക്ക് പൊട്ടു തൊടൽ ','Y','N','2024-10-11 12:25:20.877572'),(9,'പാസിംഗ് ദി ഡോൾ','Y','N','2024-10-11 12:32:11.809963'),(10,'ചതിയൻ തൊപ്പി ','Y','N','2024-10-11 12:32:27.466120'),(11,'മെഴുകുതിരി കത്തിക്കൽ ','Y','N','2024-10-11 12:32:45.447230'),(12,'പുഷ് അപ്പ് ','Y','N','2024-10-11 12:33:06.734823'),(13,'ലെമൺ സ്പൂൺ','Y','N','2024-10-11 12:33:21.800174'),(14,'സൈക്കിൾ സ്ലോ റേസ് ','Y','N','2024-10-11 12:33:35.293506'),(15,'ചെസ്സ് ','Y','N','2024-10-11 12:33:50.876859'),(16,'കവിതാ രചന','Y','N','2024-10-11 12:34:03.068532'),(17,'കഥാ രചന','Y','N','2024-10-11 12:34:14.543132'),(18,'ഉപന്യാസം ','Y','N','2024-10-11 12:34:25.817361'),(19,'ചിത്ര രചന','Y','N','2024-10-11 12:34:38.024401'),(20,'കളറിംഗ് ','Y','N','2024-10-11 12:34:48.835609'),(21,'കവിതാ പാരായണം','Y','N','2024-10-11 12:35:01.994555'),(22,'ലളിതഗാനം','Y','N','2024-10-11 12:35:24.884991'),(23,'പ്രസംഗം','Y','N','2024-10-11 12:35:34.569082'),(24,'പ്രച്ഛന്നവേശം','Y','N','2024-10-11 12:35:52.134178'),(25,'സമൂഹഗാനം','Y','Y','2024-10-11 12:36:05.498273'),(26,'നാടൻപാട്ട്','Y','Y','2024-10-11 12:36:16.156596'),(27,'സിനിമാഗാനം','Y','Y','2024-10-11 12:36:28.000434'),(28,'നിശ്ചല ദൃശ്യം ','Y','Y','2024-10-11 12:37:02.386076');
 /*!40000 ALTER TABLE `events_master` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `form_test`
+--
+
+DROP TABLE IF EXISTS `form_test`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `form_test` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `Standard_id` bigint NOT NULL,
+  `Event_id` bigint DEFAULT NULL,
+  `Student_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `form_test_Standard_id_0437c583_fk_class_list_id` (`Standard_id`),
+  KEY `form_test_Event_id_3c423481_fk_events_master_id` (`Event_id`),
+  KEY `form_test_Student_id_04e29e6b_fk_students_id` (`Student_id`),
+  CONSTRAINT `form_test_Event_id_3c423481_fk_events_master_id` FOREIGN KEY (`Event_id`) REFERENCES `events_master` (`id`),
+  CONSTRAINT `form_test_Standard_id_0437c583_fk_class_list_id` FOREIGN KEY (`Standard_id`) REFERENCES `class_list` (`id`),
+  CONSTRAINT `form_test_Student_id_04e29e6b_fk_students_id` FOREIGN KEY (`Student_id`) REFERENCES `students` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `form_test`
+--
+
+LOCK TABLES `form_test` WRITE;
+/*!40000 ALTER TABLE `form_test` DISABLE KEYS */;
+/*!40000 ALTER TABLE `form_test` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -393,7 +495,7 @@ CREATE TABLE `quiz_master` (
   PRIMARY KEY (`id`),
   KEY `quiz_master_acc_year_id_acb593a1_fk_academic_year_id` (`acc_year_id`),
   CONSTRAINT `quiz_master_acc_year_id_acb593a1_fk_academic_year_id` FOREIGN KEY (`acc_year_id`) REFERENCES `academic_year` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -402,7 +504,7 @@ CREATE TABLE `quiz_master` (
 
 LOCK TABLES `quiz_master` WRITE;
 /*!40000 ALTER TABLE `quiz_master` DISABLE KEYS */;
-INSERT INTO `quiz_master` VALUES (7,'2024/quizdocs/image/image.jpg','2024/quizdocs/audio/Kando_Kando_00_01_00-00_01_19.mp3','','2024-08-21 14:32:02.893373','LP',1);
+INSERT INTO `quiz_master` VALUES (1,'2024/quizdocs/image/up_93AS06g.jpg','2024/quizdocs/audio/up_Q4799ld.mp3','2024/quizdocs/video/up_xmK9vg4.mp4','2024-10-11 12:15:35.980136','UP',1),(2,'2024/quizdocs/image/hs_fEtYflt.jpg','2024/quizdocs/audio/hs.mp3','2024/quizdocs/video/hs.mp4','2024-10-11 12:16:24.564458','HS',1),(3,'2024/quizdocs/image/hss.jpg','2024/quizdocs/audio/hss.mp3','2024/quizdocs/video/hss.mp4','2024-10-11 12:17:03.099143','HSS',1);
 /*!40000 ALTER TABLE `quiz_master` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,12 +520,13 @@ CREATE TABLE `students` (
   `student_name` varchar(30) NOT NULL,
   `academic_yr_id` bigint NOT NULL,
   `class_list_id` bigint NOT NULL,
+  `gender` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `students_academic_yr_id_ac22e49f_fk_academic_year_id` (`academic_yr_id`),
   KEY `students_class_list_id_cdcab79c_fk_class_list_id` (`class_list_id`),
   CONSTRAINT `students_academic_yr_id_ac22e49f_fk_academic_year_id` FOREIGN KEY (`academic_yr_id`) REFERENCES `academic_year` (`id`),
   CONSTRAINT `students_class_list_id_cdcab79c_fk_class_list_id` FOREIGN KEY (`class_list_id`) REFERENCES `class_list` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,7 +535,6 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1,'vishnu s',1,1),(2,'Abhirami u',1,1),(3,'Abhirami u',1,2),(4,'test1',1,2);
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -445,4 +547,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-01 16:04:10
+-- Dump completed on 2024-10-13 21:19:09
