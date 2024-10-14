@@ -289,6 +289,8 @@ CREATE TABLE `cultural_events` (
   `AccYear_id` bigint NOT NULL,
   `classId_id` bigint NOT NULL,
   `eventId_id` bigint NOT NULL,
+  `EventOrder` int DEFAULT NULL,
+  `FileName` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cultural_events_AccYear_id_131d199b_fk_academic_year_id` (`AccYear_id`),
   KEY `cultural_events_classId_id_c995077e_fk_class_list_id` (`classId_id`),
@@ -381,7 +383,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -390,7 +392,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'Cultural_events','0001_initial','2024-10-11 12:08:16.632023'),(2,'Quiz','0001_initial','2024-10-11 12:08:16.687804'),(3,'Quiz','0002_remove_classlist_class_abbr_and_more','2024-10-11 12:08:16.857407'),(4,'Quiz','0003_quizmaster','2024-10-11 12:08:16.980455'),(5,'Quiz','0004_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:16.996971'),(6,'Quiz','0005_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:17.015345'),(7,'Quiz','0006_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:17.046977'),(8,'Quiz','0007_remove_quizmaster_classid_quizmaster_classlevel','2024-10-11 12:08:17.310055'),(9,'Quiz','0008_academicyear_quizmaster_acc_year','2024-10-11 12:08:17.499327'),(10,'Quiz','0009_academicyear_enddate_academicyear_startdate','2024-10-11 12:08:17.676488'),(11,'Students','0001_initial','2024-10-11 12:08:17.874083'),(12,'contenttypes','0001_initial','2024-10-11 12:08:17.950345'),(13,'auth','0001_initial','2024-10-11 12:08:18.826416'),(14,'admin','0001_initial','2024-10-11 12:08:19.047354'),(15,'admin','0002_logentry_remove_auto_add','2024-10-11 12:08:19.072221'),(16,'admin','0003_logentry_add_action_flag_choices','2024-10-11 12:08:19.096841'),(17,'contenttypes','0002_remove_content_type_name','2024-10-11 12:08:19.254643'),(18,'auth','0002_alter_permission_name_max_length','2024-10-11 12:08:19.354396'),(19,'auth','0003_alter_user_email_max_length','2024-10-11 12:08:19.419405'),(20,'auth','0004_alter_user_username_opts','2024-10-11 12:08:19.450969'),(21,'auth','0005_alter_user_last_login_null','2024-10-11 12:08:19.573668'),(22,'auth','0006_require_contenttypes_0002','2024-10-11 12:08:19.578805'),(23,'auth','0007_alter_validators_add_error_messages','2024-10-11 12:08:19.602597'),(24,'auth','0008_alter_user_username_max_length','2024-10-11 12:08:19.741592'),(25,'auth','0009_alter_user_last_name_max_length','2024-10-11 12:08:19.887509'),(26,'auth','0010_alter_group_name_max_length','2024-10-11 12:08:19.951911'),(27,'auth','0011_update_proxy_permissions','2024-10-11 12:08:20.012476'),(28,'auth','0012_alter_user_first_name_max_length','2024-10-11 12:08:20.141082'),(29,'sessions','0001_initial','2024-10-11 12:08:20.220300'),(30,'studevents','0001_initial','2024-10-11 12:08:20.422692'),(31,'studevents','0002_rename_studeevents_studevents','2024-10-11 12:08:20.474263'),(32,'studevents','0003_compstudevents_delete_studevents','2024-10-11 12:08:20.797974'),(33,'studevents','0004_remove_compstudevents_student_compstudevents_student','2024-10-11 12:08:21.502559'),(34,'studevents','0005_remove_compstudevents_student_compstudevents_student','2024-10-11 12:08:21.751573'),(35,'studevents','0006_compstudevents_standard','2024-10-11 12:08:21.997741'),(36,'studevents','0007_formtest','2024-10-11 12:08:22.243284'),(37,'studevents','0008_rename_standard_formtest_standard_formtest_event','2024-10-11 12:08:22.676770'),(38,'studevents','0009_formtest_student','2024-10-11 12:08:22.851812'),(39,'Students','0002_students_gender','2024-10-13 14:18:40.520775'),(40,'Cultural_events','0002_culturalevents','2024-10-13 15:02:32.103259');
+INSERT INTO `django_migrations` VALUES (1,'Cultural_events','0001_initial','2024-10-11 12:08:16.632023'),(2,'Quiz','0001_initial','2024-10-11 12:08:16.687804'),(3,'Quiz','0002_remove_classlist_class_abbr_and_more','2024-10-11 12:08:16.857407'),(4,'Quiz','0003_quizmaster','2024-10-11 12:08:16.980455'),(5,'Quiz','0004_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:16.996971'),(6,'Quiz','0005_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:17.015345'),(7,'Quiz','0006_alter_quizmaster_audio_q_alter_quizmaster_image_q_and_more','2024-10-11 12:08:17.046977'),(8,'Quiz','0007_remove_quizmaster_classid_quizmaster_classlevel','2024-10-11 12:08:17.310055'),(9,'Quiz','0008_academicyear_quizmaster_acc_year','2024-10-11 12:08:17.499327'),(10,'Quiz','0009_academicyear_enddate_academicyear_startdate','2024-10-11 12:08:17.676488'),(11,'Students','0001_initial','2024-10-11 12:08:17.874083'),(12,'contenttypes','0001_initial','2024-10-11 12:08:17.950345'),(13,'auth','0001_initial','2024-10-11 12:08:18.826416'),(14,'admin','0001_initial','2024-10-11 12:08:19.047354'),(15,'admin','0002_logentry_remove_auto_add','2024-10-11 12:08:19.072221'),(16,'admin','0003_logentry_add_action_flag_choices','2024-10-11 12:08:19.096841'),(17,'contenttypes','0002_remove_content_type_name','2024-10-11 12:08:19.254643'),(18,'auth','0002_alter_permission_name_max_length','2024-10-11 12:08:19.354396'),(19,'auth','0003_alter_user_email_max_length','2024-10-11 12:08:19.419405'),(20,'auth','0004_alter_user_username_opts','2024-10-11 12:08:19.450969'),(21,'auth','0005_alter_user_last_login_null','2024-10-11 12:08:19.573668'),(22,'auth','0006_require_contenttypes_0002','2024-10-11 12:08:19.578805'),(23,'auth','0007_alter_validators_add_error_messages','2024-10-11 12:08:19.602597'),(24,'auth','0008_alter_user_username_max_length','2024-10-11 12:08:19.741592'),(25,'auth','0009_alter_user_last_name_max_length','2024-10-11 12:08:19.887509'),(26,'auth','0010_alter_group_name_max_length','2024-10-11 12:08:19.951911'),(27,'auth','0011_update_proxy_permissions','2024-10-11 12:08:20.012476'),(28,'auth','0012_alter_user_first_name_max_length','2024-10-11 12:08:20.141082'),(29,'sessions','0001_initial','2024-10-11 12:08:20.220300'),(30,'studevents','0001_initial','2024-10-11 12:08:20.422692'),(31,'studevents','0002_rename_studeevents_studevents','2024-10-11 12:08:20.474263'),(32,'studevents','0003_compstudevents_delete_studevents','2024-10-11 12:08:20.797974'),(33,'studevents','0004_remove_compstudevents_student_compstudevents_student','2024-10-11 12:08:21.502559'),(34,'studevents','0005_remove_compstudevents_student_compstudevents_student','2024-10-11 12:08:21.751573'),(35,'studevents','0006_compstudevents_standard','2024-10-11 12:08:21.997741'),(36,'studevents','0007_formtest','2024-10-11 12:08:22.243284'),(37,'studevents','0008_rename_standard_formtest_standard_formtest_event','2024-10-11 12:08:22.676770'),(38,'studevents','0009_formtest_student','2024-10-11 12:08:22.851812'),(39,'Students','0002_students_gender','2024-10-13 14:18:40.520775'),(40,'Cultural_events','0002_culturalevents','2024-10-13 15:02:32.103259'),(41,'Cultural_events','0003_culturalevents_eventorder_culturalevents_filename','2024-10-14 14:39:17.884193'),(42,'Cultural_events','0004_alter_culturalevents_eventorder','2024-10-14 14:39:17.908170');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -526,7 +528,7 @@ CREATE TABLE `students` (
   KEY `students_class_list_id_cdcab79c_fk_class_list_id` (`class_list_id`),
   CONSTRAINT `students_academic_yr_id_ac22e49f_fk_academic_year_id` FOREIGN KEY (`academic_yr_id`) REFERENCES `academic_year` (`id`),
   CONSTRAINT `students_class_list_id_cdcab79c_fk_class_list_id` FOREIGN KEY (`class_list_id`) REFERENCES `class_list` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -535,6 +537,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
+INSERT INTO `students` VALUES (1,'Sachu Suresh',1,3,'M'),(2,'Niveditha S S',1,4,'F'),(3,'Aswin B',1,7,'M'),(4,'Adithyan S S',1,5,'M'),(5,'Arathy B S',1,6,'F'),(6,'Abhithajith A M',1,6,'F'),(7,'Jewel S S',1,2,'F'),(8,'Aslin B Shaji',1,6,'F'),(9,'Jidev B',1,6,'M'),(10,'Vishnu S S',1,7,'M'),(11,'Arjun Krishna R R',1,10,'M'),(12,'Ajay R',1,9,'M'),(13,'Amarind A D',1,12,'M'),(14,'Abhishek S',1,12,'M'),(15,'Sreehari S',1,10,'M'),(16,'Sachu Lal A N',1,11,'M'),(17,'Sreesanth S Sunil',1,11,'M'),(18,'Keerthana J Jiji',1,8,'F'),(19,'Gowri S V',1,10,'F'),(20,'Adithya J Saji',1,11,'F'),(21,'Kavya B K',1,11,'F'),(22,'Caine Nevis',1,10,'M'),(23,'Vishnu Rajesh R S',1,12,'M'),(24,'Nivedya R Kumar',1,10,'F'),(25,'Anamika S S',1,8,'F'),(26,'Anakha Krishna S B',1,12,'F'),(27,'Saniya Binu D',1,12,'F'),(28,'Amal S',1,12,'M'),(29,'Siju B',1,11,'M'),(30,'Avanthika A R',1,1,'F'),(31,'Adithya S P',1,9,'F'),(32,'Gouri S',1,12,'F'),(33,'Bhadra S Laiju',1,12,'F'),(34,'Abhijith S R',1,7,'M'),(35,'Milan S S',1,5,'M');
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -547,4 +550,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-13 21:19:09
+-- Dump completed on 2024-10-14 20:09:53

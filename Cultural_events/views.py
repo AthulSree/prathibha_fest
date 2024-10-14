@@ -60,32 +60,63 @@ def cultural_index(request):
     context = {'menuactive':'culturalEvnts', 'events_list': []}
     return render(request,'Cultural_events/events_index.html',context)
 def cultral_list(request):
-    return render(request, 'Cultural_events/events_list.html')
+    events = CulturalEvents.objects.all().order_by('id')
+    context = {'events': events}
+    return render(request, 'Cultural_events/events_list.html', context)
 def save_cultural_event(request, id):
+    # Get the latest academic year
     academic_year = AcademicYear.objects.latest('pk')
+
+    # Check if we're editing an existing event or creating a new one
     if id == 0:
         events = None
     else:
         events = get_object_or_404(CulturalEvents, pk=id)
-    if(request.method == 'POST'):
+
+    if request.method == 'POST':
+        # Initialize the form, either for a new event or an existing one
         if events:
-            form = EventForm(request.POST, instance=events)
+            form = EventForm(request.POST, request.FILES, instance=events)
         else:
             form = EventForm(request.POST, request.FILES)
+
+        # Check if the form is valid
         if form.is_valid():
-            event = CulturalEvents(
-                # AccYear=form.cleaned_data['AccYear'],
-                AccYear = academic_year,
-                eventId=form.cleaned_data['eventId'],
-                classId=form.cleaned_data['classId'],
-                EventName=form.cleaned_data['EventName'],
-                EventDesc=form.cleaned_data['EventDesc'],
-                EventFile=form.cleaned_data['EventFile']
-            )
-            event.save()
-            return JsonResponse({'status':200, 'msg':"Operation completed successfully"})
+            if events:
+                # Update the existing event instance
+                events.AccYear = academic_year
+                events.eventId = form.cleaned_data['eventId']
+                events.classId = form.cleaned_data['classId']
+                events.EventName = form.cleaned_data['EventName']
+                events.EventDesc = form.cleaned_data['EventDesc']
+                events.FileName = form.cleaned_data['FileName']
+                if form.cleaned_data.get('EventFile'):  # Only set if a new file is uploaded
+                    events.EventFile = form.cleaned_data['EventFile']
+                events.save()
+            else:
+                # Create a new event instance
+                event = CulturalEvents(
+                    AccYear=academic_year,
+                    eventId=form.cleaned_data['eventId'],
+                    classId=form.cleaned_data['classId'],
+                    EventName=form.cleaned_data['EventName'],
+                    EventDesc=form.cleaned_data['EventDesc'],
+                    EventFile=form.cleaned_data['EventFile'],
+                    FileName = form.cleaned_data['FileName']
+
+                )
+                event.save()
+
+            return JsonResponse({'status': 200, 'msg': "Operation completed successfully"})
         else:
-            return render(request, 'Cultural_events/cultural_event_form.html', {'form': form, 'id':id})
+            # If the form is not valid, render the form with errors
+            return render(request, 'Cultural_events/cultural_event_form.html', {'form': form, 'id': id})
+
     else:
-        form = EventForm()
-        return render(request, 'Cultural_events/cultural_event_form.html', {'form':form, 'id':id})
+        # For GET requests, initialize the form
+        if events:
+            form = EventForm(instance=events)
+        else:
+            form = EventForm()
+
+    return render(request, 'Cultural_events/cultural_event_form.html', {'form': form, 'id': id})

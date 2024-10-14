@@ -1,14 +1,6 @@
 from django import forms
-from ..models import AcademicYear, Events_master, ClassList
-
-class EventForm(forms.Form):
-    # AccYear = forms.ModelChoiceField(
-    #     queryset=AcademicYear.objects.all(),
-    #     widget=forms.Select(attrs={
-    #         'class': 'form-control select2',
-    #     })
-    # )
-    
+from ..models import *
+class EventForm(forms.ModelForm):
     classId = forms.ModelChoiceField(
         queryset=ClassList.objects.all(),
         widget=forms.Select(attrs={
@@ -39,8 +31,20 @@ class EventForm(forms.Form):
         })
     )
     
+    FileName = forms.CharField(
+        max_length=200,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter file name',
+        })
+    )
+
     EventFile = forms.FileField(
         widget=forms.ClearableFileInput(attrs={
             'class': 'form-control-file',
         })
     )
+
+    class Meta:
+        model = CulturalEvents
+        fields = ['classId', 'eventId', 'EventName','EventDesc','FileName', 'EventFile']

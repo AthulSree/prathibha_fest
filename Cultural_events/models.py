@@ -25,6 +25,8 @@ class CulturalEvents(models.Model):
     EventDesc = models.TextField()
     EventFile = models.FileField(upload_to=upload_path)
     updatedOn = models.DateTimeField(auto_now_add=True)
+    FileName = models.CharField(max_length=200, null=True)
+    EventOrder = models.IntegerField(null=True)
 
     class Meta:
         db_table = 'cultural_events'

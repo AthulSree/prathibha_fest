@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'prathibha_fest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prathibha_fest_main',
+        'NAME': 'prathibha_fest',
         'USER': 'root',
         'PASSWORD': 'sr82an71', #ubuntu
         #'PASSWORD': 'sr82@n71', #windows
