@@ -1,0 +1,62 @@
+{% extends "Cultural_events/menu.html" %}
+
+{% load static %}
+
+{% block bodycontent %}
+<div class="content-wrapper">
+	<table class="" style="width:100%;text-align:center !important;">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Item</th>
+                <th class="text-center">Event Name</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Song</th>
+                <th class="text-center">File</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr class="text-center">
+                <td>{{forloop.counter}}</td>
+                <td>{{event.eventId}}</td>
+                <td>{{event.EventName}}</td>
+                <td>{{event.EventDesc}}</td>
+                <td>{{event.FileName}}</td>
+                <td>
+                    {% if event.EventFile != '' %}
+                    <audio controls>
+                        <source src="{{event.EventFile.url}}" type="audio/mpeg">
+                    </audio>
+                    {% else %}
+                    No media found
+                    {% endif %}
+                </td>
+                <td>
+                    <input type="text" value="{{ event.EventOrder}}" name="event_order">
+                    <span class="badge bg-info text-dark btn-modal" data-url="{% url 'save_cultural_event' id=event.id %}">
+                        <i class="ti-pencil menu-icon text-light iconstyle">
+                            Update</i>
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{# ------ Modal-------- #}
+
+
+<!-- Modal -->
+<div class="modal fade" id="commonModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'projs/generic.js' %}"></script>
+{% endblock %}

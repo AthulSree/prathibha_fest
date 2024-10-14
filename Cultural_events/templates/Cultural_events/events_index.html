@@ -10,6 +10,28 @@
 		<div class="card-img-overlay">
 			<h5 class="card-title fs-4">Program Details</h5>
 			<p class="card-text d-flex justify-content-end">
+
+				<a class="btn btn-primary me-2" href="{% url 'events_order_list' %}">
+					<b>
+						<i class="ti-list  menu-icon">
+							Program List</i>
+					</b>
+				</a>
+
+				<button type="button" class="btn btn-primary btn-modal me-2" data-url="{% url 'save_cultural_event' id=0 %}">
+					<b>
+						<i class="ti-list  menu-icon">
+							PlayList</i>
+					</b>
+				</button>
+
+				<a class="btn btn-primary me-2" href="{% url 'events_order_list' %}">
+					<b>
+						<i class="ti-pencil  menu-icon">
+							Order The Items</i>
+					</b>
+				</a>
+
 				<button type="button" class="btn btn-primary btn-modal" data-url="{% url 'save_cultural_event' id=0 %}">
 					<b>
 						<i class="ti-plus  menu-icon">
@@ -17,10 +39,11 @@
 					</b>
 				</button>
 			</p>
+
 		</div>
 
 		<div class="card-body dataBody" data-url="{% url 'cultural_events_list' %}">
-			
+
 		</div>
 	</div>
 </div>

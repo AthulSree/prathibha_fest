@@ -125,3 +125,8 @@ def delete_cultural_event(request, id):
     event = get_object_or_404(CulturalEvents, pk=id)
     event.delete()
     return JsonResponse({'status': 200, 'msg': "Event deleted successfully"})
+
+def events_order_list(request):
+    events = CulturalEvents.objects.all().order_by('EventOrder')
+    context = {'events': events}
+    return render(request,'Cultural_events/events_order_list.html', context)

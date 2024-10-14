@@ -1,0 +1,80 @@
+{% extends "Cultural_events/base.html" %}
+
+{% load static %}
+
+
+{% block header %}
+	<!-- navbar : base ending -->
+	<div
+		class="container-fluid page-body-wrapper-event">
+		<!-- header -->
+		<nav class="sidebar sidebar-offcanvas" id="sidebar">
+			<ul class="nav">
+				<li class="nav-item {% if menuactive == 'dashboard' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'dashboard' %}">
+						<i class="icon-grid menu-icon"></i>
+						<span class="menu-title">Dashboard</span>
+					</a>
+				</li>
+
+				<li class="nav-item {% if menuactive == 'quizMaster' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'quiz_master' %}">
+						<i class="ti-write  menu-icon"></i>
+						<span class="menu-title">Quiz Master</span>
+					</a>
+				</li>
+				<li class="nav-item {% if menuactive == 'classList' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'classList' %}">
+						<i class="ti-id-badge  menu-icon"></i>
+						<span class="menu-title">Class List</span>
+					</a>
+				</li>
+			
+				<li class="nav-item {% if menuactive == 'eventsMaster' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'events_master' %}">
+						<i class="ti-agenda  menu-icon"></i>
+						<span class="menu-title">Events Master</span>
+					</a>
+				</li>
+
+				<li class="nav-item {% if menuactive == 'studentsList' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'students_index' %}">
+						<i class="ti-agenda  menu-icon"></i>
+						<span class="menu-title">Students List</span>
+					</a>
+				</li>
+
+				<li class="nav-item {% if menuactive == 'studevents' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'comp_studevents_index' %}">
+						<i class="ti-control-shuffle  menu-icon"></i>
+						<span class="menu-title">Competitive <br> Events</span>
+					</a>
+				</li>
+
+				<li class="nav-item {% if menuactive == 'culturalEvnts' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'cultural_events_index' %}">
+						<i class="ti-control-shuffle  menu-icon"></i>
+						<span class="menu-title">Cultural Events</span>
+					</a>
+				</li>
+
+			</ul>
+		</nav>
+		<!-- header -->
+
+		<div class="main-panel">
+
+                {% block bodycontent %}{% endblock %}
+
+			<footer class="footer">
+				<div class="d-sm-flex justify-content-center justify-content-sm-between">
+					<span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024. The Creator - The God - 
+						<a href="#" target="_blank">The Brahmoski</a>
+						. All rights reserved.</span>
+					<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+						<i class="ti-heart text-danger ms-1"></i>
+					</span>
+				</div>
+			</footer>
+		</div>
+	{% endblock %}
