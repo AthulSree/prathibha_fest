@@ -34,6 +34,11 @@ def save_student(request, id):
         if form.is_valid():
             student = form.save(commit=False)
             student.academic_yr = academic_year
+
+            if Students.objects.filter(student_name=student.student_name, academic_yr=academic_year, class_list=student.class_list).exclude(pk=student.pk).exists():
+                form.add_error(None, "Student Already Exists.")
+                return render(request, 'Students/studentForm.html', {'form': form, 'id':id})
+
             student.save()
             return JsonResponse({'status':200, 'msg':"Operation completed successfully"})
         else:
