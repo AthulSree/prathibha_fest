@@ -32,6 +32,11 @@
                     <i class="ti-pencil menu-icon text-light iconstyle">
                         Edit</i>
                 </span>
+
+                <span class="badge bg-danger text-dark delete-btn" data-url="{% url 'delete_cultural_event' event.id %}">
+                    <i class="ti-trash menu-icon text-light iconstyle">
+                        Delete</i>
+                </span>
             </td>
         </tr>
         {% endfor %}

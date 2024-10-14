@@ -120,3 +120,8 @@ def save_cultural_event(request, id):
             form = EventForm()
 
     return render(request, 'Cultural_events/cultural_event_form.html', {'form': form, 'id': id})
+
+def delete_cultural_event(request, id):
+    event = get_object_or_404(CulturalEvents, pk=id)
+    event.delete()
+    return JsonResponse({'status': 200, 'msg': "Event deleted successfully"})

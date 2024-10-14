@@ -10,6 +10,7 @@ urlpatterns = [
     path('index', views.cultural_index, name='cultural_events_index'),
     path('list', views.cultral_list, name='cultural_events_list'),
     path('save_cultural_event/<int:id>/', views.save_cultural_event, name='save_cultural_event'),
+    path('delete_cultural_event/<int:id>/', views.delete_cultural_event, name='delete_cultural_event'),
 
 ]
 

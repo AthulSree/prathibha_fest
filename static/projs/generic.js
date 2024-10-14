@@ -57,4 +57,16 @@ $(document).ready(function(){
             }
         })
     })
+
+    $(document).on('click', '.delete-btn', function () {
+        url = $(this).data('url');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+                toastmessage('success', data.msg);
+                loadData();
+            }
+        })
+    })
 })
