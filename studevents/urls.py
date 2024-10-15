@@ -8,5 +8,6 @@ urlpatterns = [
     path("", views.comp_studevents_index, name="comp_studevents_index"),
     path("save/<int:id>/", views.comp_studevents_save, name="compStudeventsSave"),
     path("comp_stud_events",views.comp_studevents_list, name ="competitive_student_events"),
-    path("save_test/<int:id>/", views.save_form_test, name="compStudeventsSaveTest")
+    path("save_test/<int:id>/", views.save_form_test, name="compStudeventsSaveTest"),
+    path('get-students-by-class/', views.get_students_by_class, name='get_students_by_class'),
 ]

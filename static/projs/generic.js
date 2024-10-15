@@ -51,6 +51,9 @@ $(document).ready(function(){
                     $('#commonModal').modal('hide');
                     loadData();
                 }
+                else if (data.status == 400) {
+                    toastmessage('error', data.msg)
+                }
                 else {
                     $('.modal-content').html(data)
                 }
@@ -70,3 +73,20 @@ $(document).ready(function(){
         })
     })
 })
+
+$(document).on('change', '.ajaxDn', function() {
+    var classId = $(this).val();
+    $.ajax({
+        url: 'get-students-by-class',  // URL for the view
+        data: {
+            'class_id': classId
+        },
+        dataType: 'json',
+        success: function(data) {
+            $('.ajaxChild').empty();  // Clear existing options
+            $.each(data, function(index, student) {
+                $('.ajaxChild').append(new Option(student.name, student.id));
+            });
+        }
+    });
+});

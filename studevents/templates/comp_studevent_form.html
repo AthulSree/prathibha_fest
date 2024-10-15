@@ -1,28 +1,37 @@
 <div class="modal-header">
-	<h5 class="modal-title" id="addNewModalLabel">Add new Event</h5>
-	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <h5 class="modal-title" id="addNewModalLabel">Add new Event</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-	<form class="row g-3 needs-validation formblockcontent" id="commonForm" data-action="{% url 'compStudeventsSave' id=id %}" method="post">
+    <form class="row g-3 needs-validation formblockcontent" id="commonForm"
+        data-action="{% url 'compStudeventsSave' id=id %}" method="post">
         {% csrf_token %}
-    <div class="mb-3">
         <div class="mb-3">
-        {{form.pgm_id.label}}
-        {{form.pgm_id}}
-        
-        {{form.Standard.label}}
-        {{form.Standard}}
-        
-        {{form.Student.label}}
-        {{form.Student}}
+            <div class="mb-3">
+                {% if form.non_field_errors %}
+                <div class="error">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+                {{form.pgm_id.label}}
+                {{form.pgm_id}}
 
-        {{form.Event.label}}
-        {{form.Event}}
+                {{form.Standard.label}}
+                {{form.Standard}}
 
-        {{form.Description.label}}
-        {{form.Description}}
+                {{form.Student.label}}
+                {{form.Student}}
+
+                {{form.Event.label}}
+                {{form.Event}}
+
+                {{form.Description.label}}
+                {{form.Description}}
+
+                {{form.Prize.label}}
+                {{form.Prize}}
+            </div>
         </div>
-    </div>
-            <button type="button" class="btn btn-primary commonSubmit">Save</button>
+        <button type="button" class="btn btn-primary commonSubmit">Save</button>
     </form>
 </div>

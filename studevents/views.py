@@ -4,6 +4,8 @@ from .forms.comp_studevents_form import CompStudEventForm
 from .forms.comp_studevents_form_test import CompStudEventFormTest
 from studevents.models import CompStudEvents,formTest
 from Quiz.models import AcademicYear
+from .models import *
+import random
 
 # Create your views here.
 
@@ -12,20 +14,21 @@ def comp_studevents_index(request):
     return render(request,'comp_studevent_index.html')
 
 def comp_studevents_list(request):
-    # listdata = CompStudEvents.objects.all()
+    listdata = CompStudEvents.objects.all().order_by('-id')
     # query = "SELECT id, pgm_id, student_id, event_id, academic_year_id  FROM comp_student_events  GROUP BY id, pgm_id, student_id, event_id, academic_year_id"
     # listdata = CompStudEvents.objects.raw(query)
-    query = "SELECT id,standard_id,Event_id,Student_id FROM form_test GROUP BY id,standard_id,Event_id,Student_id"
-    listdata = formTest.objects.all()
+    # query = "SELECT id,standard_id,Event_id,Student_id FROM form_test GROUP BY id,standard_id,Event_id,Student_id"
+    # listdata = formTest.objects.all()
     context = {'stud_events':listdata}
-    # return render(request,'comp_studevent_list.html', context)
-    return render(request,'comp_studevent_list_test.html', context)
+    return render(request,'comp_studevent_list.html', context)
+    # return render(request,'comp_studevent_list_test.html', context)
 
 
 def comp_studevents_save(request, id):
     academic_yr = AcademicYear.objects.latest('pk')  # Fetch the latest academic year
 
     if(id==0):
+        pgm_id = generate_unique_chest_number()
         comp_event = None
     else:
         comp_event = get_object_or_404(CompStudEvents, pk=id)
@@ -42,6 +45,14 @@ def comp_studevents_save(request, id):
             std = form.cleaned_data['Standard']
             description = form.cleaned_data['Description']
             students = form.cleaned_data['Student']  # This will be a list of selected students
+            prize = form.cleaned_data['Prize']
+
+            if comp_event:
+                if CompStudEvents.objects.filter(pgm_id=pgm_id).exclude(pk=comp_event.pk).exists():
+                    return JsonResponse({'status': 400, 'msg': "Chest No already exists"})
+            else:
+                if CompStudEvents.objects.filter(pgm_id=pgm_id).exists():
+                    return JsonResponse({'status': 400, 'msg': "Chest No already exists"})
             
             for student in students:
                 comp_event = CompStudEvents(
@@ -50,8 +61,10 @@ def comp_studevents_save(request, id):
                     standard=std,
                     student=student,
                     event=event,
-                    description=description
+                    description=description,
+                    prize = prize
                 )
+                
                 comp_event.save()
 
 
@@ -60,14 +73,14 @@ def comp_studevents_save(request, id):
             # Print form errors for debugging
             print('>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<<<<<<')
             print(form.errors)
-
+            return render(request, 'comp_studevent_form.html', {'form': form, 'id': id})
     else:
         if comp_event:
             print('*****************',comp_event)
             form = CompStudEventForm(instance=comp_event)
             print(form.initial) 
         else:
-            form = CompStudEventForm()
+            form = CompStudEventForm(initial={'pgm_id': pgm_id})
 
     return render(request, 'comp_studevent_form.html', {'form': form, 'id': id})
 
@@ -115,3 +128,19 @@ def save_form_test(request, id):
             form = CompStudEventFormTest()
 
     return render(request, 'comp_studevent_form_test.html', {'form': form, 'id': id})
+
+
+def generate_unique_chest_number():
+    chest_number = None
+    while True:
+        chest_number = random.randint(100, 999)
+        if not CompStudEvents.objects.filter(pgm_id=chest_number).exists():
+            break
+    return chest_number
+
+def get_students_by_class(request):
+    if request.method == 'GET':
+        class_id = request.GET.get('class_id')
+        students = Students.objects.filter(class_list=class_id)  # Adjust this based on your models
+        student_list = [{'id': student.id, 'name': student.student_name} for student in students]
+        return JsonResponse(student_list, safe=False)

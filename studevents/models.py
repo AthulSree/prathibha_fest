@@ -12,6 +12,7 @@ class CompStudEvents(models.Model):
     student = models.ForeignKey(Students, on_delete=models.CASCADE, null=True)
     event = models.ForeignKey(Events_master, on_delete=models.CASCADE)
     description = models.CharField(max_length=100,null=True)
+    prize = models.CharField(max_length=5, null=True)
 
     class Meta:
         db_table = "comp_student_events"

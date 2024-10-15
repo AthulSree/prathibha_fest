@@ -2,28 +2,41 @@
 	<thead>
 		<tr>
 			<th class="text-center">#</th>
-			<th class="text-center">Academic Year</th>
+			<th class="text-center">Class</th>
 			<th class="text-center">Chest N0</th>
 			<th class="text-center">Participant</th>
 			<th class="text-center">Event</th>
+			<th class="text-center">Prize</th>
 			<th class="text-center">Action</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for studEvent in stud_events %}
-			<tr class="text-center">
-				<td>{{forloop.counter}}</td>
-				<td>{{studEvent.academic_year}}</td>
-				<td>{{studEvent.pgm_id}}</td>
-				<td>{{studEvent.student}}</td>
-				<td>{{studEvent.event}}</td>
-				<td>
-					<span class="badge bg-info text-dark btn-modal" data-url="{% url 'compStudeventsSave' id=studEvent.id %}">
-						<i class="ti-pencil menu-icon text-light iconstyle">
-							Edit</i>
-					</span>
-				</td>
-			</tr>
+		<tr class="text-center">
+			<td>{{forloop.counter}}</td>
+			<td>{{studEvent.standard}}</td>
+			<td>{{studEvent.pgm_id}}</td>
+			<td>{{studEvent.student}}</td>
+			<td>{{studEvent.event}}</td>
+			<td>
+				{% if studEvent.prize == 'I' %}
+					First Prize
+				{% elif studEvent.prize == 'II' %}
+					Second Prize
+				{% elif studEvent.prize == 'III' %}
+					പ്രോത്സാഹന സമ്മാനം
+				{% else %}
+					Consolation Prize
+				{% endif %}
+			</td>
+			<td>
+				<span class="badge bg-info text-dark btn-modal"
+					data-url="{% url 'compStudeventsSave' id=studEvent.id %}">
+					<i class="ti-pencil menu-icon text-light iconstyle">
+						Edit</i>
+				</span>
+			</td>
+		</tr>
 		{% endfor %}
 	</tbody>
 </table>

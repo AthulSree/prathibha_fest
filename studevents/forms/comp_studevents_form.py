@@ -5,19 +5,25 @@ from Quiz.models import ClassList
 from ..models import CompStudEvents
 
 class CompStudEventForm(forms.ModelForm):
+    PRIZE_CHOICES = [
+        ('I', 'First Prize'),
+        ('II', 'Second Prize'),
+        ('III', 'Third Prize'),
+    ]
+
     pgm_id = forms.CharField(
         label='Chest Number',
-        widget=forms.TextInput(attrs={'class':'form-control'})
+        widget=forms.TextInput(attrs={'class':'form-control', 'readonly':'readonly'})
     )
     Standard = forms.ModelChoiceField(
         queryset=ClassList.objects.all(),
         label="Class",
-        widget=forms.Select(attrs={'class':'form-control select2'})
+        widget=forms.Select(attrs={'class':'form-control select2 ajaxDn'})
     )
     Student = forms.ModelMultipleChoiceField(
         queryset=Students.objects.all(),
         label="Student",
-        widget=forms.SelectMultiple(attrs={'class':"form-control select2"})
+        widget=forms.SelectMultiple(attrs={'class':"form-control select2 ajaxChild"})
     )
     Event = forms.ModelChoiceField(
         queryset=Events_master.objects.filter(competition_item = 'Y'),
@@ -27,13 +33,19 @@ class CompStudEventForm(forms.ModelForm):
     Description = forms.CharField(
         label="Description",
         required=False,
-        widget=forms.Textarea(attrs={'class':'form-control'})
+        widget=forms.Textarea(attrs={'class':'form-control','rows': 2})
     )
-
+    Prize = forms.ChoiceField(
+        label="Prize Got",
+        choices=PRIZE_CHOICES,
+        widget=forms.Select(attrs={
+            'class': 'form-control select2',
+        })
+    )
 
     class Meta:
         model=CompStudEvents
-        fields=['pgm_id','Standard','Student','Event','Description']
+        fields=['pgm_id','Standard','Student','Event','Description', 'Prize']
         
 
     # def clean(self):
