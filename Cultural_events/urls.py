@@ -12,6 +12,7 @@ urlpatterns = [
     path('save_cultural_event/<int:id>/', views.save_cultural_event, name='save_cultural_event'),
     path('delete_cultural_event/<int:id>/', views.delete_cultural_event, name='delete_cultural_event'),
     path('events_order_list', views.events_order_list, name='events_order_list'),
+    path('print_cultural_events_ordered',views.print_cultural_events_ordered, name='print_cultural_events_ordered')
 
 ]
 
