@@ -64,7 +64,8 @@ def comp_studevents_save(request, id):
                     description=description,
                     prize = prize
                 )
-                
+                if CompStudEvents.objects.filter(student=student, event=event).exclude(pk=comp_event.pk).exists():
+                    return JsonResponse({'status': 400, 'msg': "Already added"})
                 comp_event.save()
 
 

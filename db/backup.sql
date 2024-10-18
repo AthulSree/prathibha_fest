@@ -262,7 +262,7 @@ CREATE TABLE `comp_student_events` (
   CONSTRAINT `comp_student_events_event_id_2db9da2b_fk_events_master_id` FOREIGN KEY (`event_id`) REFERENCES `events_master` (`id`),
   CONSTRAINT `comp_student_events_standard_id_e4c8ddfd_fk_class_list_id` FOREIGN KEY (`standard_id`) REFERENCES `class_list` (`id`),
   CONSTRAINT `comp_student_events_student_id_5458b78a_fk_students_id` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,7 +271,7 @@ CREATE TABLE `comp_student_events` (
 
 LOCK TABLES `comp_student_events` WRITE;
 /*!40000 ALTER TABLE `comp_student_events` DISABLE KEYS */;
-INSERT INTO `comp_student_events` VALUES (1,181,'',1,4,1,3,'I'),(2,407,'',1,4,2,2,'II'),(3,828,'',1,4,3,7,'I'),(5,450,'',1,4,5,6,'I'),(6,561,'',1,4,4,5,'II'),(7,264,'',1,4,6,6,'II'),(8,909,'',1,5,1,3,'I'),(9,184,'',1,5,7,2,'II');
+INSERT INTO `comp_student_events` VALUES (1,181,'',1,4,1,3,'I'),(2,407,'',1,4,2,2,'II'),(3,828,'',1,4,3,7,'I'),(5,450,'',1,4,5,6,'I'),(6,561,'',1,4,4,5,'II'),(7,264,'',1,4,6,6,'II'),(8,909,'',1,5,1,3,'I'),(9,184,'',1,5,7,2,'II'),(10,811,'',1,5,5,6,'I'),(11,360,'',1,5,8,6,'II'),(12,534,'',1,5,9,6,'I'),(13,933,'',1,5,10,7,'II'),(14,235,'',1,14,11,10,'I'),(15,841,'',1,14,12,9,'II'),(16,190,'',1,14,13,12,'I'),(17,712,'',1,14,14,12,'II');
 /*!40000 ALTER TABLE `comp_student_events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,4 +552,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-15 22:30:45
+-- Dump completed on 2024-10-18 21:43:41
