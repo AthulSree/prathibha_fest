@@ -4,8 +4,8 @@
 
 {% block bodycontent %}
 <div class="content-wrapper">
-    <table class="" style="width:100%;text-align:center !important;">
-        <thead>
+	<table class="table table-bordered table-hover table-dark table-striped" style="width:100%;text-align:center !important;">
+        <thead class="thead-dark">
             <tr>
                 <th class="text-center">#</th>
                 <th class="text-center">Class</th>
@@ -14,14 +14,13 @@
                 <th class="text-center">Description</th>
                 <th class="text-center">Song</th>
                 <th class="text-center">File</th>
-                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
             {% for event in events %}
             <tr class="text-center">
                 <td>{{forloop.counter}}</td>
-            <td>{{ event.classId }}</td>
+                <td>{{event.classId}}</td>
                 <td>{{event.eventId}}</td>
                 <td>{{event.EventName}}</td>
                 <td>{{event.EventDesc}}</td>
@@ -38,17 +37,6 @@
                     No media found
                     {% endif %}
                 </td>
-                <td>
-                    <form id="commonForm{{event.id}}" data-action="{% url 'update_event_order' %}" method="post">
-                        {% csrf_token %}
-                        <input type="text" value="{{ event.EventOrder}}" name="event_order">
-                        <input type="hidden" value="{{ event.id}}" name="eventId">
-                        <span class="badge bg-info text-dark commonUpdate" data-id="commonForm{{event.id}}">
-                            <i class="ti-pencil menu-icon text-light iconstyle">
-                                Update</i>
-                        </span>
-                    </form>
-                </td>
             </tr>
             {% endfor %}
         </tbody>
@@ -56,16 +44,6 @@
 </div>
 
 {# ------ Modal-------- #}
-
-
-<!-- Modal -->
-<div class="modal fade" id="commonModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-        </div>
-    </div>
-</div>
 
 <script src="{% static 'projs/generic.js' %}"></script>
 {% endblock %}

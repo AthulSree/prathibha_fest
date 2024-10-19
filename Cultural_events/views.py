@@ -130,17 +130,39 @@ def delete_cultural_event(request, id):
 
 def events_order_list(request):
     events = CulturalEvents.objects.all().order_by('EventOrder')
-    context = {'events': events}
+    context = {'menuactive':'culturalEvnts','events': events}
     return render(request,'Cultural_events/events_order_list.html', context)
+
+def show_playlist(request):
+    events = CulturalEvents.objects.all().order_by('EventOrder')
+    context = {'menuactive':'culturalEvnts','events': events}
+    return render(request,'Cultural_events/play_list.html', context)
 
 def print_cultural_events_ordered(request):
 
     data = CulturalEvents.objects.all().order_by('EventOrder')
     context = {'data':data}
     # html_string = "<h1>Goes Here!</h1>"
-    html_string = render_to_string("Cultural_events\cultural_events_ordered.html", context)
+    html_string = render_to_string("Cultural_events/cultural_events_ordered.html", context)
     pdf_file = HTML(string=html_string).write_pdf()
     response = HttpResponse(pdf_file, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="output.pdf"'
 
     return response
+
+
+def update_event_order(request):
+    try:
+        # Get the event object by its ID
+        event_id = request.POST.get('eventId')
+        event_order = request.POST.get('event_order')
+        
+        event = get_object_or_404(CulturalEvents, id=event_id)
+
+        # Update the event order
+        event.EventOrder = event_order
+        event.save()
+
+        return JsonResponse({'status': 200, 'msg': "Operation completed successfully"})    
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)

@@ -2,8 +2,9 @@
     <thead>
         <tr>
             <th class="text-center">#</th>
-            <th class="text-center">Item</th>
-            <th class="text-center">Event Name</th>
+            <th class="text-center">Class</th>
+            <th class="text-center">Event</th>
+            <th class="text-center">Participant Name</th>
             <th class="text-center">Description</th>
             <th class="text-center">Song</th>
             <th class="text-center">File</th>
@@ -14,6 +15,7 @@
         {% for event in events %}
         <tr class="text-center">
             <td>{{forloop.counter}}</td>
+            <td>{{ event.classId }}</td>
             <td>{{event.eventId}}</td>
             <td>{{event.EventName}}</td>
             <td>{{event.EventDesc}}</td>

@@ -61,6 +61,33 @@ $(document).ready(function(){
         })
     })
 
+    $(document).on('click', '.commonUpdate',function (e) {
+        e.preventDefault();
+        var formId = $(this).data('id'); // Get the form ID
+        var form = $('#' + formId); 
+        var path = form.data('action');
+        var formData = new FormData(form[0]);
+        $.ajax({
+            url: path,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.status == 200) {
+                    toastmessage('success', data.msg)
+                    // loadData();
+                }
+                else if (data.status == 400) {
+                    toastmessage('error', data.msg)
+                }
+                else {
+                    $('.modal-content').html(data)
+                }
+            }
+        })
+    })
+
     $(document).on('click', '.delete-btn', function () {
         url = $(this).data('url');
         $.ajax({
@@ -88,5 +115,14 @@ $(document).on('change', '.ajaxDn', function() {
                 $('.ajaxChild').append(new Option(student.name, student.id));
             });
         }
+    });
+});
+
+$(document).ready(function() {
+    $('.stopButton').click(function() {
+        var audioId = $(this).data('id'); // Get the audio ID from the data attribute
+        var audio = $('#' + audioId)[0];  // Select the audio element by ID and get the DOM element
+        audio.pause();                    // Pause the audio
+        audio.currentTime = 0;            // Reset the audio to the beginning
     });
 });

@@ -14,16 +14,16 @@
 				<a class="btn btn-primary me-2" href="{% url 'print_cultural_events_ordered' %}">
 					<b>
 						<i class="ti-list  menu-icon">
-							Program List</i>
+							Program List Print</i>
 					</b>
 				</a>
 
-				<button type="button" class="btn btn-primary btn-modal me-2" data-url="{% url 'save_cultural_event' id=0 %}">
+				<a class="btn btn-primary me-2" href="{% url 'show_playlist' %}">
 					<b>
 						<i class="ti-list  menu-icon">
 							PlayList</i>
 					</b>
-				</button>
+				</a>
 
 				<a class="btn btn-primary me-2" href="{% url 'events_order_list' %}">
 					<b>
