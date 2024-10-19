@@ -1,10 +1,12 @@
 from django.shortcuts import render #type: ignore
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect # type: ignore
 from django.urls import reverse  # type: ignore
-from django.utils import timezone
+from django.utils import timezone #type: ignore
 from .models import *
 from Cultural_events.form.EventForm import EventForm
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render #type: ignore
+from django.template.loader import render_to_string #type: ignore
+from weasyprint import HTML #type: ignore
 
 # Create your views here.
 
@@ -130,3 +132,15 @@ def events_order_list(request):
     events = CulturalEvents.objects.all().order_by('EventOrder')
     context = {'events': events}
     return render(request,'Cultural_events/events_order_list.html', context)
+
+def print_cultural_events_ordered(request):
+
+    data = CulturalEvents.objects.all().order_by('EventOrder')
+    context = {'data':data}
+    # html_string = "<h1>Goes Here!</h1>"
+    html_string = render_to_string("Cultural_events\cultural_events_ordered.html", context)
+    pdf_file = HTML(string=html_string).write_pdf()
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="output.pdf"'
+
+    return response

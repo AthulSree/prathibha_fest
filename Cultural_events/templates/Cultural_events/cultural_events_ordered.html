@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Kalaparipadikal</title>
+		<style>
+			body {
+				font-family: "Times New Roman", Times, serif;
+                font-size: 12px
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+
+			table,
+			th,
+			td {
+				border: 1px solid black;
+			}
+
+			th,
+			td {
+				padding: 10px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #f2f2f2;
+			}
+
+			h1 {
+				text-align: center;
+				font-family: "Times New Roman", Times, serif;
+			}
+
+            .slno{
+                width:10px;
+            }
+		</style>
+	</head>
+	<body>
+
+		<h1>കലാപരിപാടികൾ</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th class="slno">Sl. No</th>
+					<th>Class</th>
+					<th>Item</th>
+					<th>Participants</th>
+					<th>Description</th>
+					<th>File Name</th>
+				</tr>
+			</thead>
+			<tbody>
+            {% for value in data %}
+				<tr>
+					<td class="slno">{{forloop.counter}}</td>
+					<td>{{value.classId}}</td>
+					<td>{{value.eventId}}</td>
+					<td>{{value.EventName}}</td>
+					<td>{{value.EventDesc}}</td>
+					<td>{{value.FileName}}</td>
+				</tr>
+            {% endfor %}
+				<!-- Add more rows as needed -->
+			</tbody>
+		</table>
+
+	</body>
+</html>
+
