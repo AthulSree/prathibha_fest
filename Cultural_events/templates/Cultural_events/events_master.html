@@ -27,6 +27,8 @@
 			<th class="text-center">Programme</th>
 			<th class="text-center">Competition Item</th>
 			<th class="text-center">Group Item</th>
+			<th class="text-center">Sports Item</th>
+			<th class="text-center">Artistic Item</th>
 			<th class="text-center">Edit</th>
 		</tr>
 	</thead>
@@ -37,6 +39,8 @@
 				<td>{{events.event}}</td>
 				<td>{% if events.competition_item == 'Y' %} ✅ {% else %} ❌ {% endif %}</td>
 				<td>{% if events.group_item == 'Y' %} ✅ {% else %} ❌ {% endif %}</td>
+				<td>{% if events.sports_item == 'Y' %} ✅ {% else %} ❌ {% endif %}</td>
+				<td>{% if events.artistic_item == 'Y' %} ✅ {% else %} ❌ {% endif %}</td>
 				<td>
 					<span class="badge bg-info text-dark btn-modal" data-url="{% url 'save_event_master' id=events.id %}" data-classLevel="{{quizdata.classLevel}}">
 						<i class="ti-pencil menu-icon text-light iconstyle">

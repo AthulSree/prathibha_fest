@@ -23,22 +23,29 @@ def save_events(request, id):
             eventname = post.get('event_name')
             comp_item = post.get('comp_item')
             grp_item = post.get('grp_item')
+            arts_item = post.get('arts_item')
+            sprts_item = post.get('sports_item')            
 
             comp_item = 'Y' if comp_item == 'on' else 'N'
             grp_item = 'Y' if grp_item == 'on' else 'N'
-
-            Events_master.objects.create(event=eventname, competition_item=comp_item, group_item=grp_item, updated_on=timezone.now())
+            arts_item = 'Y' if arts_item == 'on' else 'N'
+            sprts_item = 'Y' if sprts_item == 'on' else 'N'
+            Events_master.objects.create(event=eventname, competition_item=comp_item, group_item=grp_item,artistic_item=arts_item, sports_item=sprts_item, updated_on=timezone.now())
             return HttpResponseRedirect(reverse('events_master'))
         else:
             post = request.POST
             eventname = post.get('event_name')
             comp_item = post.get('comp_item')
             grp_item = post.get('grp_item')
+            arts_item = post.get('arts_item')
+            sprts_item = post.get('sports_item')            
 
             comp_item = 'Y' if comp_item == 'on' else 'N'
             grp_item = 'Y' if grp_item == 'on' else 'N'
+            arts_item = 'Y' if arts_item == 'on' else 'N'
+            sprts_item = 'Y' if sprts_item == 'on' else 'N'
 
-            Events_master.objects.filter(id=id).update(event=eventname, competition_item=comp_item, group_item=grp_item, updated_on=timezone.now())
+            Events_master.objects.filter(id=id).update(event=eventname, competition_item=comp_item, group_item=grp_item,artistic_item=arts_item, sports_item=sprts_item, updated_on=timezone.now())
             return HttpResponseRedirect(reverse('events_master'))
 
     else:
@@ -48,12 +55,16 @@ def save_events(request, id):
             event = events.event
             group = events.group_item
             comp = events.competition_item
+            arts=events.artistic_item
+            sprts = events.sports_item
         except:
             id =0
             event = ''
             group = ''
             comp =''
-        context = {'id':id, 'event':event, 'group':group, 'comp':comp}
+            arts=''
+            sprts=''
+        context = {'id':id, 'event':event, 'group':group, 'comp':comp, 'arts':arts, 'sprts':sprts}
 
         return render(request,'Cultural_events/events_master_form.html',context)
 
