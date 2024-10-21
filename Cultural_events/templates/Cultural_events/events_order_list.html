@@ -41,7 +41,7 @@
                 <td>
                     <form id="commonForm{{event.id}}" data-action="{% url 'update_event_order' %}" method="post">
                         {% csrf_token %}
-                        <input type="text" value="{{ event.EventOrder}}" name="event_order">
+                        <input type="text" value="{{ event.EventOrder}}" name="event_order" style="width: 65px;">
                         <input type="hidden" value="{{ event.id}}" name="eventId">
                         <span class="badge bg-info text-dark commonUpdate" data-id="commonForm{{event.id}}">
                             <i class="ti-pencil menu-icon text-light iconstyle">

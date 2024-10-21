@@ -24,6 +24,7 @@ class EventForm(forms.ModelForm):
     )
     
     EventDesc = forms.CharField(
+        required=False,
         widget=forms.Textarea(attrs={
             'class': 'form-control',
             'rows': 3,
@@ -32,6 +33,7 @@ class EventForm(forms.ModelForm):
     )
     
     FileName = forms.CharField(
+        required=False,
         max_length=200,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -40,6 +42,7 @@ class EventForm(forms.ModelForm):
     )
 
     EventFile = forms.FileField(
+        required=False,
         widget=forms.ClearableFileInput(attrs={
             'class': 'form-control-file',
         })
