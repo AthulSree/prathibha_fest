@@ -1,0 +1,28 @@
+{% extends "Quiz/menu.html" %}
+
+{% load static %}
+
+
+{% block bodycontent %}
+
+
+<div class="content-wrapper">
+	<div class="card mb-3">
+		<div class="card-img-overlay">
+			<h5 class="card-title fs-4">Prized List</h5>
+			<p class="card-text d-flex justify-content-end">
+				<a class="btn btn-primary me-2" href="{% url 'gen_nongroup_report' %}">
+					<b>
+						<i class="ti-download  menu-icon">
+							Download</i>
+					</b>
+				</a>
+			</p>
+		</div>
+
+
+	</div>
+</div>
+
+<script src="{% static 'projs/generic.js' %}"></script>
+{% endblock %}

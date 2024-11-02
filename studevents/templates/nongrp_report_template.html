@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Kalaparipadikal</title>
+		<style>
+			@page {
+				margin-top: 1mm;
+				margin-bottom: 1mm;
+			}
+
+			body {
+				font-family: "Times New Roman", Times, serif;
+				font-size: 12px
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+
+			table,
+			th,
+			td {
+				border: 1px solid black;
+			}
+
+			th,
+			td {
+				padding: 10px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #f2f2f2;
+			}
+
+			h1 {
+				text-align: center;
+				font-family: "Times New Roman", Times, serif;
+			}
+
+			.slno {
+				width: 10px;
+			}
+
+
+			table {
+				border-collapse: collapse;
+				text-align: center;
+			}
+
+			th,
+			td {
+				border: 1px solid #000;
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<h1>Single Items - Prizes</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Level</th>
+					<th>Class</th>
+					<th>Participant</th>
+					<th>Prize</th>
+					<th>Item</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for values in nongpr_list %}
+					<tr>
+						{% if values.fp_event|length > 0 and values.sp_event|length > 0 %}
+							<td rowspan="2">{{ values.level }}</td>
+							<td rowspan="2">{{ values.class }}</td>
+							<td rowspan="2"><b>{{ values.student }}</b></td>
+						{% else %}
+							<td>{{ values.level }}</td>
+							<td>{{ values.class }}</td>
+							<td><b>{{ values.student }}</b></td>
+                        {% endif %}
+						{% if values.fp_event|length > 0 %}
+							<td>I</td>
+							<td>{{ values.fp_event|join:", " }}</td>
+						{% elif values.sp_event|length > 0 %}
+							<td>II</td>
+							<td>{{ values.sp_event|join:", " }}</td>
+						{% endif %}
+					</tr>
+					{% if values.fp_event|length != 0 and  values.sp_event|length > 0 %}
+						<tr>
+							<td>II</td>
+							<td>{{ values.sp_event|join:", " }}</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</tbody>
+	</body>
+</html></table></body></html>

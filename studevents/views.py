@@ -1,13 +1,14 @@
 from django.shortcuts import render,get_object_or_404 #type:ignore
-from django.http import JsonResponse #type:ignore
+from django.http import HttpResponse,JsonResponse #type:ignore
 from .forms.comp_studevents_form import CompStudEventForm
 from .forms.comp_studevents_form_test import CompStudEventFormTest
 from studevents.models import CompStudEvents,formTest
 from Quiz.models import AcademicYear
 from .models import *
 import random
+from weasyprint import HTML #type: ignore
+from django.template.loader import render_to_string #type: ignore
 
-# Create your views here.
 
 
 def comp_studevents_index(request):
@@ -145,3 +146,70 @@ def get_students_by_class(request):
         students = Students.objects.filter(class_list=class_id)  # Adjust this based on your models
         student_list = [{'id': student.id, 'name': student.student_name} for student in students]
         return JsonResponse(student_list, safe=False)
+    
+def gen_nongroup_report_index(request):
+    context = {'menuactive': 'nongrp_report'}
+    return render(request, 'nongrp_report.html', context)
+
+def gen_nongroup_report(request):
+    print('>>>>>')
+    query = """
+        SELECT c.id, c.standard_id,
+               s.id AS stud_id, 
+               s.student_name AS student_info, 
+               c.description, 
+               e.event AS event_info, 
+               c.prize, 
+               c.pgm_id
+        FROM comp_student_events c
+        LEFT JOIN events_master e ON c.event_id = e.id
+        LEFT JOIN students s ON c.student_id = s.id
+        WHERE e.group_item = %s 
+          AND c.academic_year_id = %s 
+        ORDER BY c.standard_id, c.student_id, c.prize
+    """
+    nongrp_list = CompStudEvents.objects.raw(query, ['N', 1])
+    
+    filter_list = []
+    prev_studid = None  # Track the previous student ID
+    counter = -1  # Initialize counter to -1 so the first increment sets it to 0
+
+    for item in nongrp_list:
+        if prev_studid == item.stud_id:
+            if item.prize == 'I':
+                filter_list[counter]['fp_event'].append(item.event_info)
+            elif item.prize == 'II':
+                filter_list[counter]['sp_event'].append(item.event_info)
+        else:
+            filter_list.append({
+                'level': get_level(item.standard_id),
+                'class': item.standard_id,
+                'student': item.student_info,
+                'fp_event': [item.event_info] if item.prize == 'I' else [],  # Initialize as list
+                'sp_event': [item.event_info] if item.prize == 'II' else []   # Initialize as list
+            })
+            counter += 1
+            prev_studid = item.stud_id  # Update the previous student ID to the current one
+    
+    nongrp_list = {'nongpr_list': filter_list}            
+        
+    print(nongrp_list)
+    
+    html_string = render_to_string("nongrp_report_template.html", nongrp_list)
+    
+    pdf_file = HTML(string=html_string).write_pdf()
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="output.pdf"'
+    return response
+
+def get_level(class_value):
+    if class_value <= 4:
+        return 'LP'
+    elif class_value <= 7:
+        return 'UP'
+    elif class_value <= 10:
+        return 'HS'
+    elif class_value <= 12:
+        return 'HSS'
+    else:
+        return None
