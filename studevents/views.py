@@ -193,7 +193,7 @@ def gen_nongroup_report(request):
     
     nongrp_list = {'nongpr_list': filter_list}            
         
-    print(nongrp_list)
+    # print(nongrp_list)
     
     html_string = render_to_string("nongrp_report_template.html", nongrp_list)
     
@@ -213,3 +213,89 @@ def get_level(class_value):
         return 'HSS'
     else:
         return None
+    
+def single_items_report(request):
+    print('>>>>>')
+    query = """
+        SELECT c.id, c.standard_id,
+               s.id AS stud_id, 
+               s.student_name AS student_info, 
+               c.description, 
+               e.event AS event_info, 
+               c.prize, 
+               c.pgm_id
+        FROM comp_student_events c
+        LEFT JOIN events_master e ON c.event_id = e.id
+        LEFT JOIN students s ON c.student_id = s.id
+        WHERE e.group_item = %s 
+          AND c.academic_year_id = %s 
+        ORDER BY c.standard_id, c.student_id, c.prize
+    """
+    nongrp_list = CompStudEvents.objects.raw(query, ['N', 1])
+    
+    filter_list = []
+    prev_studid = None  # Track the previous student ID
+    counter = -1  # Initialize counter to -1 so the first increment sets it to 0
+
+    for item in nongrp_list:
+        if prev_studid == item.stud_id:
+            if item.prize == 'I':
+                filter_list[counter]['fp_event'].append(item.event_info)
+            elif item.prize == 'II':
+                filter_list[counter]['sp_event'].append(item.event_info)
+        else:
+            filter_list.append({
+                'level': get_level(item.standard_id),
+                'class': item.standard_id,
+                'student': item.student_info,
+                'fp_event': [item.event_info] if item.prize == 'I' else [],  # Initialize as list
+                'sp_event': [item.event_info] if item.prize == 'II' else []   # Initialize as list
+            })
+            counter += 1
+            prev_studid = item.stud_id  # Update the previous student ID to the current one
+    
+    nongrp_list = {'nongpr_list': filter_list} 
+    return render(request,'nongrp_report_template.html', nongrp_list)    
+
+def group_items_report(request):
+    print('>>>>>')
+    query = """
+        SELECT c.id, c.standard_id,
+               s.id AS stud_id, 
+               s.student_name AS student_info, 
+               c.description, 
+               e.event AS event_info, 
+               c.prize, 
+               c.pgm_id
+        FROM comp_student_events c
+        LEFT JOIN events_master e ON c.event_id = e.id
+        LEFT JOIN students s ON c.student_id = s.id
+        WHERE e.group_item = %s 
+          AND c.academic_year_id = %s 
+        ORDER BY c.standard_id, c.student_id, c.prize
+    """
+    nongrp_list = CompStudEvents.objects.raw(query, ['N', 1])
+    
+    filter_list = []
+    prev_studid = None  # Track the previous student ID
+    counter = -1  # Initialize counter to -1 so the first increment sets it to 0
+
+    for item in nongrp_list:
+        if prev_studid == item.stud_id:
+            if item.prize == 'I':
+                filter_list[counter]['fp_event'].append(item.event_info)
+            elif item.prize == 'II':
+                filter_list[counter]['sp_event'].append(item.event_info)
+        else:
+            filter_list.append({
+                'level': get_level(item.standard_id),
+                'class': item.standard_id,
+                'student': item.student_info,
+                'fp_event': [item.event_info] if item.prize == 'I' else [],  # Initialize as list
+                'sp_event': [item.event_info] if item.prize == 'II' else []   # Initialize as list
+            })
+            counter += 1
+            prev_studid = item.stud_id  # Update the previous student ID to the current one
+    
+    nongrp_list = {'nongpr_list': filter_list} 
+    return render(request,'nongrp_report_template.html', nongrp_list)  

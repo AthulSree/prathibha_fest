@@ -11,5 +11,9 @@ urlpatterns = [
     path("save_test/<int:id>/", views.save_form_test, name="compStudeventsSaveTest"),
     path('get-students-by-class/', views.get_students_by_class, name='get_students_by_class'),
     path('gen_nongroup_report_index/', views.gen_nongroup_report_index, name='gen_nongroup_report_index'),
-    path('gen_nongroup_report/', views.gen_nongroup_report, name='gen_nongroup_report')
+    path('gen_nongroup_report/', views.gen_nongroup_report, name='gen_nongroup_report'),
+    path('single_items_report/', views.single_items_report, name='single_items_report'),
+    path('group_items_report/', views.group_items_report, name='group_items_report')
+
+
 ]
