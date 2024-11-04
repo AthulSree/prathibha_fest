@@ -76,7 +76,7 @@ $(document).ready(function(){
             success: function (data) {
                 if (data.status == 200) {
                     toastmessage('success', data.msg)
-                    // loadData();
+                    loadData();
                 }
                 else if (data.status == 400) {
                     toastmessage('error', data.msg)

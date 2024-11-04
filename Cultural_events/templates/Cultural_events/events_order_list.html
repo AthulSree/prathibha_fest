@@ -4,7 +4,7 @@
 
 {% block bodycontent %}
 <div class="content-wrapper">
-    <table class="" style="width:100%;text-align:center !important;">
+    <table class="table-bordered" style="width:100%;text-align:center !important;">
         <thead>
             <tr>
                 <th class="text-center">#</th>
@@ -41,7 +41,10 @@
                 <td>
                     <form id="commonForm{{event.id}}" data-action="{% url 'update_event_order' %}" method="post">
                         {% csrf_token %}
-                        <input type="text" value="{{ event.EventOrder}}" name="event_order" style="width: 65px;">
+                        <input type="text" 
+                        name="event_order" 
+                        value="{% if event.EventOrder %}{{ event.EventOrder }}{% else %}{% endif %}" 
+                        style="width: 65px;">
                         <input type="hidden" value="{{ event.id}}" name="eventId">
                         <span class="badge bg-info text-dark commonUpdate" data-id="commonForm{{event.id}}">
                             <i class="ti-pencil menu-icon text-light iconstyle">
